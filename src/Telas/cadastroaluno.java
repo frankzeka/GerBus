@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gerbus;
+package Telas;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,8 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import persistencia.Aluno;
+import operacoes.Salvar;
+import pojo.Aluno;
 
 /**
  *
@@ -62,7 +63,7 @@ public class cadastroaluno extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Botao_Salvar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -73,7 +74,7 @@ public class cadastroaluno extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -114,10 +115,10 @@ public class cadastroaluno extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
         jLabel11.setText("CEP:");
 
-        jButton1.setText("Salvar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Botao_Salvar.setText("Salvar");
+        Botao_Salvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                Botao_SalvarMouseClicked(evt);
             }
         });
 
@@ -199,7 +200,7 @@ public class cadastroaluno extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(184, 184, 184)
-                .addComponent(jButton1)
+                .addComponent(Botao_Salvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -251,7 +252,7 @@ public class cadastroaluno extends javax.swing.JFrame {
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(Botao_Salvar)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
@@ -281,44 +282,41 @@ public class cadastroaluno extends javax.swing.JFrame {
             Endereco.setText(ficha.getEndereco());
           }
           catch(ClassNotFoundException e){
-          JOptionPane.showMessageDialog(null, "Problema com a Classe", "SmartGas", JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(null, "Problema com a Classe", "GerBus", JOptionPane.ERROR_MESSAGE);
             }
          catch(FileNotFoundException e){
-            JOptionPane.showMessageDialog(null, "Gerando Arquivo de Dados", "SmartGas", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Arquivo não encontrado", "GerBus", JOptionPane.INFORMATION_MESSAGE);
             File arquivo = new File("aluno.db");
            try {
             arquivo.createNewFile();
+            JOptionPane.showMessageDialog(null, "Criando novo arquivo de dados", "Gerbus", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
-            Logger.getLogger(cadastroaluno.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Problema de Leitura, arquivo corrompido!", "Gerbus", JOptionPane.ERROR_MESSAGE);            
             }
         }
             catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Nenhum funcionário cadastrado", "SmartGas", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nenhum Aluno cadastrado", "Gerbus", JOptionPane.INFORMATION_MESSAGE);
         }
          
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void Botao_SalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Botao_SalvarMouseClicked
         // TODO add your handling code here:
                  ficha.setNome(Nome.getText());
                  ficha.setEndereco(Endereco.getText());              
                  
-                 FileOutputStream fluxo;
+                 Salvar s = new Salvar();
         try {
-            fluxo = new FileOutputStream("aluno.db");
-                     try {
-                         ObjectOutputStream arquivo = new ObjectOutputStream(fluxo);
-                         arquivo.writeObject(ficha);
-                         arquivo.close();
-                     } catch (IOException ex) {
-                         Logger.getLogger(cadastroaluno.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(cadastroaluno.class.getName()).log(Level.SEVERE, null, ex);
+            s.salva("aluno.db",ficha);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Problema ao Salvar", "Gerbus", JOptionPane.INFORMATION_MESSAGE);
         }
+        JOptionPane.showMessageDialog(null, "Salvo com sucesso!", "Gerbus", JOptionPane.INFORMATION_MESSAGE);         
+                 
+                 
             
          
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_Botao_SalvarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -357,9 +355,9 @@ public class cadastroaluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Botao_Salvar;
     private javax.swing.JTextField Endereco;
     private javax.swing.JTextField Nome;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
