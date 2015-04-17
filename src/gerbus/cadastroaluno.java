@@ -5,16 +5,30 @@
  */
 package gerbus;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import persistencia.Aluno;
+
 /**
  *
  * @author User
  */
 public class cadastroaluno extends javax.swing.JFrame {
+    Aluno ficha = new Aluno();   
 
     /**
      * Creates new form cadastroaluno
      */
     public cadastroaluno() {
+       
         initComponents();
     }
 
@@ -41,7 +55,7 @@ public class cadastroaluno extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        Endereco = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -60,6 +74,11 @@ public class cadastroaluno extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
         jLabel3.setText("Nome Completo:");
@@ -96,6 +115,11 @@ public class cadastroaluno extends javax.swing.JFrame {
         jLabel11.setText("CEP:");
 
         jButton1.setText("Salvar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Editar");
 
@@ -145,7 +169,7 @@ public class cadastroaluno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -195,7 +219,7 @@ public class cadastroaluno extends javax.swing.JFrame {
                     .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -248,6 +272,54 @@ public class cadastroaluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+         try{
+            ObjectInputStream arqEntrada = new ObjectInputStream(new FileInputStream(new File("aluno.db")));
+            ficha = (Aluno) arqEntrada.readObject();
+            Nome.setText(ficha.getNome());
+            Endereco.setText(ficha.getEndereco());
+          }
+          catch(ClassNotFoundException e){
+          JOptionPane.showMessageDialog(null, "Problema com a Classe", "SmartGas", JOptionPane.ERROR_MESSAGE);
+            }
+         catch(FileNotFoundException e){
+            JOptionPane.showMessageDialog(null, "Gerando Arquivo de Dados", "SmartGas", JOptionPane.INFORMATION_MESSAGE);
+            File arquivo = new File("aluno.db");
+           try {
+            arquivo.createNewFile();
+            } catch (IOException ex) {
+            Logger.getLogger(cadastroaluno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+            catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Nenhum funcionário cadastrado", "SmartGas", JOptionPane.INFORMATION_MESSAGE);
+        }
+         
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+                 ficha.setNome(Nome.getText());
+                 ficha.setEndereco(Endereco.getText());              
+                 
+                 FileOutputStream fluxo;
+        try {
+            fluxo = new FileOutputStream("aluno.db");
+                     try {
+                         ObjectOutputStream arquivo = new ObjectOutputStream(fluxo);
+                         arquivo.writeObject(ficha);
+                         arquivo.close();
+                     } catch (IOException ex) {
+                         Logger.getLogger(cadastroaluno.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(cadastroaluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+         
+    }//GEN-LAST:event_jButton1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -274,6 +346,7 @@ public class cadastroaluno extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(cadastroaluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -284,6 +357,7 @@ public class cadastroaluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Endereco;
     private javax.swing.JTextField Nome;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -308,7 +382,6 @@ public class cadastroaluno extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
