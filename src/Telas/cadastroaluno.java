@@ -46,7 +46,7 @@ public class cadastroaluno extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         NomeCompleto = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        DatNasc = new javax.swing.JTextField();
+        DatNascimento = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         EstadoCivil = new javax.swing.JComboBox();
         Sexo = new javax.swing.JComboBox();
@@ -157,7 +157,7 @@ public class cadastroaluno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(EstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DatNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(DatNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -216,7 +216,7 @@ public class cadastroaluno extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(DatNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DatNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -363,7 +363,7 @@ public class cadastroaluno extends javax.swing.JFrame {
     private javax.swing.JTextField Cep;
     private javax.swing.JTextField Cidade;
     private javax.swing.JTextField Cpf;
-    private javax.swing.JTextField DatNasc;
+    private javax.swing.JTextField DatNascimento;
     private javax.swing.JTextField Email;
     private javax.swing.JTextField Endereco;
     private javax.swing.JComboBox EstadoCivil;
