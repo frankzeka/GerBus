@@ -44,7 +44,7 @@ public class cadastroaluno extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        NomeComp = new javax.swing.JTextField();
+        NomeCompleto = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         DatNasc = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -175,7 +175,7 @@ public class cadastroaluno extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(NomeComp, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(Telefone, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
@@ -217,7 +217,7 @@ public class cadastroaluno extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(DatNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NomeComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,7 +278,7 @@ public class cadastroaluno extends javax.swing.JFrame {
          try{
             ObjectInputStream arqEntrada = new ObjectInputStream(new FileInputStream(new File("aluno.db")));
             ficha = (Aluno) arqEntrada.readObject();
-            NomeComp.setText(ficha.getNome());
+            NomeCompleto.setText(ficha.getNome());
             Endereco.setText(ficha.getEndereco());
           }
           catch(ClassNotFoundException e){
@@ -302,7 +302,7 @@ public class cadastroaluno extends javax.swing.JFrame {
 
     private void Botao_SalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Botao_SalvarMouseClicked
         // TODO add your handling code here:
-                 ficha.setNome(NomeComp.getText());
+                 ficha.setNome(NomeCompleto.getText());
                  ficha.setEndereco(Endereco.getText());              
                  
                  Salvar s = new Salvar();
@@ -367,7 +367,7 @@ public class cadastroaluno extends javax.swing.JFrame {
     private javax.swing.JTextField Email;
     private javax.swing.JTextField Endereco;
     private javax.swing.JComboBox EstadoCivil;
-    private javax.swing.JTextField NomeComp;
+    private javax.swing.JTextField NomeCompleto;
     private javax.swing.JTextField Rg;
     private javax.swing.JComboBox Sexo;
     private javax.swing.JTextField Telefone;
