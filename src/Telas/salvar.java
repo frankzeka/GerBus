@@ -30,7 +30,7 @@ public class salvar extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Botao_Ok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,7 +40,7 @@ public class salvar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Salvo com Sucesso!!!");
 
-        jButton1.setText("OK");
+        Botao_Ok.setText("OK");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -52,7 +52,7 @@ public class salvar extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(Botao_Ok)
                 .addGap(73, 73, 73))
         );
         jPanel1Layout.setVerticalGroup(
@@ -61,7 +61,7 @@ public class salvar extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(Botao_Ok)
                 .addGap(26, 26, 26))
         );
 
@@ -117,7 +117,7 @@ public class salvar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Botao_Ok;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
