@@ -17,6 +17,7 @@ public class Salvar {
         
     }
      public void salva(String caminho, Object objeto) throws Exception {
+            //Abre um arquivo para salvar em disco
             FileOutputStream arquivo = new FileOutputStream(caminho);
             ObjectOutputStream fluxo = new ObjectOutputStream(arquivo);
             fluxo.writeObject(objeto);
