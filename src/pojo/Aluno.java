@@ -13,6 +13,8 @@ import java.io.Serializable;
  * @author professor
  */
 public class Aluno implements Serializable {
+    //Versão da Classe, deve ser alterada a cada modificação.
+    private static final long serialVersionUID=2L; 
     private String Nome;
     private String Endereco;
 
