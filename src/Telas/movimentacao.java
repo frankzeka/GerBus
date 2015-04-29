@@ -35,7 +35,7 @@ public class movimentacao extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Nome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        Data_Compra = new javax.swing.JTextField();
+        Data_Compra1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Valor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -95,7 +95,7 @@ public class movimentacao extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel4)
                                 .addGap(2, 2, 2)
-                                .addComponent(Data_Compra))
+                                .addComponent(Data_Compra1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -130,7 +130,7 @@ public class movimentacao extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(Data_Compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Data_Compra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Salvar)
@@ -192,7 +192,7 @@ public class movimentacao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Consultar;
-    private javax.swing.JTextField Data_Compra;
+    private javax.swing.JTextField Data_Compra1;
     private javax.swing.JButton Editar;
     private javax.swing.JTextField Nome;
     private javax.swing.JComboBox PessoaFisica;
