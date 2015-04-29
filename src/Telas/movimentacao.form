@@ -71,7 +71,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="Valor" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="Valor_total" min="-2" pref="75" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -120,7 +120,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Valor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Valor_total" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Data_Movimentacao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -170,7 +170,7 @@
             <Property name="text" type="java.lang.String" value="Valor:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Valor">
+        <Component class="javax.swing.JTextField" name="Valor_total">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
