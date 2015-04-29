@@ -37,7 +37,7 @@ public class movimentacao extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Data_Movimentacao = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        Valor = new javax.swing.JTextField();
+        Valor_movimentacao = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         Receita = new javax.swing.JComboBox();
         Salvar = new javax.swing.JButton();
@@ -91,7 +91,7 @@ public class movimentacao extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Valor_movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel4)
                                 .addGap(2, 2, 2)
@@ -128,7 +128,7 @@ public class movimentacao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Valor_movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(Data_Movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -198,7 +198,7 @@ public class movimentacao extends javax.swing.JFrame {
     private javax.swing.JComboBox PessoaFisica;
     private javax.swing.JComboBox Receita;
     private javax.swing.JButton Salvar;
-    private javax.swing.JTextField Valor;
+    private javax.swing.JTextField Valor_movimentacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
