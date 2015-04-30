@@ -5,17 +5,23 @@
  */
 package Telas;
 
+import java.awt.Dimension;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
  */
 public class principal extends javax.swing.JFrame {
-
+   
+    private final Dimension tamanho_janela = this.getSize();
+    
     /**
      * Creates new form principal
      */
     public principal() {
-        initComponents();
+        setExtendedState(MAXIMIZED_BOTH);       
+        initComponents();        
     }
 
     /**
@@ -31,7 +37,8 @@ public class principal extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
         jMenuBar1 = new javax.swing.JMenuBar();
         Menu_Cadastro = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -61,29 +68,37 @@ public class principal extends javax.swing.JFrame {
         jMenuItem10.setText("jMenuItem10");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GerBus");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 694, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 288, Short.MAX_VALUE)
-        );
+        jPanel1.setPreferredSize(tamanho_janela);
+
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(337, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(309, 309, 309))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         Menu_Cadastro.setText("Cadastro");
@@ -94,6 +109,11 @@ public class principal extends javax.swing.JFrame {
         CadastroAlu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CadastroAluMouseClicked(evt);
+            }
+        });
+        CadastroAlu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroAluActionPerformed(evt);
             }
         });
         jMenu5.add(CadastroAlu);
@@ -174,8 +194,17 @@ public class principal extends javax.swing.JFrame {
 
     private void CadastroAluMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastroAluMouseClicked
         // TODO add your handling code here:
-        new cadastroaluno().setVisible(true);
+        
     }//GEN-LAST:event_CadastroAluMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_formWindowOpened
+
+    private void CadastroAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroAluActionPerformed
+
+    }//GEN-LAST:event_CadastroAluActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,7 +236,7 @@ public class principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new principal().setVisible(true);
+                new principal().setVisible(true);                
             }
         });
     }
@@ -216,7 +245,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem CadastroAlu;
     private javax.swing.JMenuItem CadastroJuri;
     private javax.swing.JMenu Menu_Cadastro;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JList jList1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -233,6 +262,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
