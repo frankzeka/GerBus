@@ -32,7 +32,7 @@ public class principal extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        Menu_Cadastro = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         CadastroAlu = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -72,7 +72,7 @@ public class principal extends javax.swing.JFrame {
             .addGap(0, 290, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Cadastro");
+        Menu_Cadastro.setText("Cadastro");
 
         jMenu5.setText("Novo");
 
@@ -88,13 +88,13 @@ public class principal extends javax.swing.JFrame {
         CadastroJuri.setText("Juridica");
         jMenu5.add(CadastroJuri);
 
-        jMenu1.add(jMenu5);
-        jMenu1.add(jSeparator1);
+        Menu_Cadastro.add(jMenu5);
+        Menu_Cadastro.add(jSeparator1);
 
         jMenuItem4.setText("Sair");
-        jMenu1.add(jMenuItem4);
+        Menu_Cadastro.add(jMenuItem4);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(Menu_Cadastro);
 
         jMenu2.setText("Movimentação");
 
@@ -201,7 +201,7 @@ public class principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CadastroAlu;
     private javax.swing.JMenuItem CadastroJuri;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu Menu_Cadastro;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
