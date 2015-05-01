@@ -17,6 +17,7 @@ public class RelatoriodePagantes extends javax.swing.JFrame {
      */
     public RelatoriodePagantes() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

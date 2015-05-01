@@ -16,6 +16,7 @@ public class cadastrojuridica extends javax.swing.JFrame {
      */
     public cadastrojuridica() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

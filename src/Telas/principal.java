@@ -59,7 +59,7 @@ public class principal extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        Carne = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -89,7 +89,7 @@ public class principal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(337, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(309, 309, 309))
         );
@@ -98,7 +98,7 @@ public class principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Menu_Cadastro.setText("Cadastro");
@@ -120,6 +120,11 @@ public class principal extends javax.swing.JFrame {
         jMenu5.add(jSeparator2);
 
         CadastroJuri.setText("Juridica");
+        CadastroJuri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroJuriActionPerformed(evt);
+            }
+        });
         jMenu5.add(CadastroJuri);
 
         Menu_Cadastro.add(jMenu5);
@@ -153,10 +158,20 @@ public class principal extends javax.swing.JFrame {
         jMenu3.setText("Relátorio");
 
         jMenuItem12.setText("Alunos");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem12);
         jMenu3.add(jSeparator5);
 
         jMenuItem11.setText("Contribuição");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem11);
         jMenu3.add(jSeparator6);
 
@@ -165,8 +180,18 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Carnê");
-        jMenuBar1.add(jMenu4);
+        Carne.setText("Carnê");
+        Carne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CarneMouseClicked(evt);
+            }
+        });
+        Carne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CarneActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(Carne);
 
         setJMenuBar(jMenuBar1);
 
@@ -203,8 +228,28 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void CadastroAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroAluActionPerformed
-
+            new cadastroaluno().setVisible(true);
     }//GEN-LAST:event_CadastroAluActionPerformed
+
+    private void CadastroJuriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroJuriActionPerformed
+        new cadastrojuridica().setVisible(true);
+    }//GEN-LAST:event_CadastroJuriActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+       new Relatorioalunos().setVisible(true);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        new RelatoriodePagantes().setVisible(true);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void CarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarneActionPerformed
+     
+    }//GEN-LAST:event_CarneActionPerformed
+
+    private void CarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CarneMouseClicked
+        new Carne().setVisible(true);
+    }//GEN-LAST:event_CarneMouseClicked
 
     /**
      * @param args the command line arguments
@@ -244,11 +289,11 @@ public class principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CadastroAlu;
     private javax.swing.JMenuItem CadastroJuri;
+    private javax.swing.JMenu Carne;
     private javax.swing.JMenu Menu_Cadastro;
     private javax.swing.JList jList1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

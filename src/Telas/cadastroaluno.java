@@ -31,6 +31,7 @@ public class cadastroaluno extends javax.swing.JFrame {
     public cadastroaluno() {
        
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

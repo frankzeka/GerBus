@@ -17,6 +17,7 @@ public class Relatorioalunos extends javax.swing.JFrame {
      */
     public Relatorioalunos() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

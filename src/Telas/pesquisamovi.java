@@ -16,6 +16,7 @@ public class pesquisamovi extends javax.swing.JFrame {
      */
     public pesquisamovi() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

@@ -16,6 +16,7 @@ public class movimentacao extends javax.swing.JFrame {
      */
     public movimentacao() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

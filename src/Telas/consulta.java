@@ -16,6 +16,7 @@ public class consulta extends javax.swing.JFrame {
      */
     public consulta() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

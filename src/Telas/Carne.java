@@ -17,6 +17,7 @@ public class Carne extends javax.swing.JFrame {
      */
     public Carne() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
