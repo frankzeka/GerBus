@@ -44,14 +44,14 @@ public class TelaCadastroAluno extends TelaCadastro {
             tela.addInternalFrameListener(new InternalFrameAdapter() { //Adiciona um listener para verificar quando a tela for fechada, fazendo assim a remoção da mesma junto ao JDesktopPane da TelaSistema e setando a variável tela = null para permitir que a tela possa ser aberta novamente em outro momento. Basicamente o mesmo controle efetuado pela tela de pesquisa, porém de uma forma um pouco diferente.
                 @Override
                 public void internalFrameClosed(InternalFrameEvent e) {
-                    Principal.jdp.remove(tela);
+                    TelaSistema.jdp.remove(tela);
                     tela = null;
                 }
-            });            Principal.jdp.add(tela);
+            });            TelaSistema.jdp.add(tela);
         }
         //Depois do teste acima, independentemente dela já existir ou não, ela é selecionada e movida para frente
-        Principal.jdp.setSelectedFrame(tela);
-        Principal.jdp.moveToFront(tela);
+        TelaSistema.jdp.setSelectedFrame(tela);
+        TelaSistema.jdp.moveToFront(tela);
         return tela;
     }
     
