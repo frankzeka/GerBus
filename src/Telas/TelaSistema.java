@@ -24,9 +24,9 @@ public class TelaSistema extends JFrame implements ActionListener {
     public JMenu jmRelatorios = new JMenu("Relatórios");
     public JMenuItem jmiAlunos = new JMenuItem("Alunos");
     public JMenuItem jmiPJ = new JMenuItem("Pessoa Juridica");
-    public JMenuItem jmiCarne = new JMenuItem("Carnes");
+    public JMenuItem jmiCarne = new JMenuItem("Gera Carne");
     public static JDesktopPane jdp = new JDesktopPane() {
-        private Image imagem = new ImageIcon(getClass().getResource("/imagens/school-bus.jpg")).getImage();
+    private Image imagem = new ImageIcon(getClass().getResource("/imagens/school-bus.jpg")).getImage();
         
         @Override
         public void paintComponent(Graphics g) {
@@ -68,6 +68,14 @@ public class TelaSistema extends JFrame implements ActionListener {
         if (ae.getSource() == jmiAlunos) {
             TelaCadastroAluno.getTela();
         }
+        if (ae.getSource() == jmiCarne) {
+            TelaGeraCarne.getTela();
+        }
+ 
+        if (ae.getSource() == jmiPJ) {
+            TelaCadastroJuridica.getTela();
+        }
+ 
  
     }
 }

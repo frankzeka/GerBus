@@ -38,7 +38,7 @@ public class TelaCadastroAluno extends TelaCadastro {
     public MeuCampoCheckBox campoAtivo = new MeuCampoCheckBox("Ativo");
     public MeuCampoData campoData = new MeuCampoData(6, false, "Data de nascimento", false);
     public MeuCampoComboBox EstadoCivil = new MeuCampoComboBox(situacao, true, true,"Estado Civil");
-        public static TelaCadastro getTela() {  //Estático para poder ser chamado de outras classes sem a necessidade de ter criado um objeto anteriormente.
+    public static TelaCadastro getTela() {  //Estático para poder ser chamado de outras classes sem a necessidade de ter criado um objeto anteriormente.
         if (tela == null) {   //Tela não está aberta, pode criar uma nova tela
             tela = new TelaCadastroAluno();
             tela.addInternalFrameListener(new InternalFrameAdapter() { //Adiciona um listener para verificar quando a tela for fechada, fazendo assim a remoção da mesma junto ao JDesktopPane da TelaSistema e setando a variável tela = null para permitir que a tela possa ser aberta novamente em outro momento. Basicamente o mesmo controle efetuado pela tela de pesquisa, porém de uma forma um pouco diferente.
