@@ -14,9 +14,10 @@ import java.io.Serializable;
  */
 public class Aluno implements Serializable {
     //Versão da Classe, deve ser alterada a cada modificação.
-    private static final long serialVersionUID=2L; 
+    private static final long serialVersionUID=1L; 
     private String Nome;
     private String Endereco;
+    private String Cidade;
 
     /**
      * @return the Nome
@@ -44,5 +45,19 @@ public class Aluno implements Serializable {
      */
     public void setEndereco(String Endereco) {
         this.Endereco = Endereco;
+    }
+
+    /**
+     * @return the Cidade
+     */
+    public String getCidade() {
+        return Cidade;
+    }
+
+    /**
+     * @param Cidade the Cidade to set
+     */
+    public void setCidade(String Cidade) {
+        this.Cidade = Cidade;
     }
 }

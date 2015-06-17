@@ -6,7 +6,7 @@
 package Telas;
 
 import static Telas.TelaCadastroAluno.tela;
-import componentes.MeuCampoTexto;
+import componentes.*;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
@@ -18,11 +18,13 @@ public class TelaCadastroJuridica extends TelaCadastro{
     public static TelaCadastroJuridica tela;
     public MeuCampoTexto campoNF = new MeuCampoTexto(30, true, true, "Nome Fantasia");
     public MeuCampoTexto campoRS = new MeuCampoTexto(30, true, true, "Razão Social");
+    public MeuCampoFormatado campoCNPJ = new MeuCampoFormatado(14, true, "CNPJ", true);
     
     public TelaCadastroJuridica(){
         super("Cadastro de Pessoa Juridica");
         adicionaCampo(1, 1, 1, 2, campoNF, ESQUERDA);
         adicionaCampo(2, 1, 1, 2, campoRS, ESQUERDA);
+        adicionaCampo(3, 1, 1, 2, campoCNPJ, ESQUERDA);
         
         pack();
         habilitarCampos(false);

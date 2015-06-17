@@ -23,7 +23,6 @@ public class TelaCadastroAluno extends TelaCadastro {
     public Aluno aluno = new Aluno();
     public String [] [] situacao = new String[] [] { {"Solteiro","Solteiro"},{"Casado","Casado"}} ;
     //public EstadoDao estadoDao = new EstadoDao(estado);
-    public MeuCampoInteiro campoCodigo = new MeuCampoInteiro(5, false, false, true, "Código");
     public MeuCampoTexto campoNome = new MeuCampoTexto(30, true, true, "Nome");
     public MeuCampoTexto campoEndereco = new MeuCampoTexto(30, true, true, "Endereco");
     public MeuCampoTexto campoCidade = new MeuCampoTexto(30, true, true, "Cidade");
@@ -57,7 +56,6 @@ public class TelaCadastroAluno extends TelaCadastro {
     
     public TelaCadastroAluno() {
         super("Cadastro de Alunos");
-        adicionaCampo(1, 1, 1, 1, campoCodigo, ESQUERDA);
         adicionaCampo(2, 1, 1, 2, campoNome, ESQUERDA);
         adicionaCampo(2, 4, 1, 1, campoData, ESQUERDA);
         adicionaCampo(3, 1, 1, 2, campoEndereco, ESQUERDA);
