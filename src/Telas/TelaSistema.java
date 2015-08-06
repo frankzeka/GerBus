@@ -15,6 +15,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import org.prevayler.Prevayler;
 
 public class TelaSistema extends JFrame implements ActionListener {
 
@@ -39,13 +40,9 @@ public class TelaSistema extends JFrame implements ActionListener {
         }
     };
 
-
-    public static void main(String args[]) {
-        new TelaSistema();
-    }
-
-    public TelaSistema() {
+    public TelaSistema(Prevayler prevayler) {
         setTitle("GerBus - Gerência de Translado Universitário");
+        
         setExtendedState(MAXIMIZED_BOTH);
         setJMenuBar(jmb);
         jmb.add(jmCadastros);
@@ -61,6 +58,7 @@ public class TelaSistema extends JFrame implements ActionListener {
         getContentPane().add("Center", jdp);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
     }
 
     @Override

@@ -4,6 +4,8 @@
  */
 package Telas;
 
+import Banco.ListasdeAlunos;
+import Dao.AlunoDao;
 import componentes.MeuCampoCheckBox;
 import componentes.MeuCampoComboBox;
 import componentes.MeuCampoData;
@@ -12,6 +14,7 @@ import componentes.MeuCampoTexto;
 import componentes.MeuJButton;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
+import org.prevayler.Prevayler;
 import pojo.Aluno;
 
 /**
@@ -22,7 +25,7 @@ public class TelaCadastroAluno extends TelaCadastro {
     public static TelaCadastroAluno tela;
     public Aluno aluno = new Aluno();
     public String [] [] situacao = new String[] [] { {"Solteiro","Solteiro"},{"Casado","Casado"}} ;
-    //public EstadoDao estadoDao = new EstadoDao(estado);
+    public AlunoDao AlunoDao = new AlunoDao(aluno);
     public MeuCampoTexto campoNome = new MeuCampoTexto(30, true, true, "Nome");
     public MeuCampoTexto campoEndereco = new MeuCampoTexto(30, true, true, "Endereco");
     public MeuCampoTexto campoCidade = new MeuCampoTexto(30, true, true, "Cidade");
@@ -35,7 +38,7 @@ public class TelaCadastroAluno extends TelaCadastro {
     public MeuCampoTexto campoEmail  = new MeuCampoTexto(30,true,true, "e-mail");
     public MeuJButton jbPesquisaCEP = new MeuJButton("Pesquisa CEP");
     public MeuCampoCheckBox campoAtivo = new MeuCampoCheckBox("Ativo");
-    public MeuCampoData campoData = new MeuCampoData(6, false, "Data de nascimento", false);
+    public MeuCampoData campoData = new MeuCampoData(7, false, "Data de nascimento", true);
     public MeuCampoComboBox EstadoCivil = new MeuCampoComboBox(situacao, true, true,"Estado Civil");
     public static TelaCadastro getTela() {  //Estático para poder ser chamado de outras classes sem a necessidade de ter criado um objeto anteriormente.
         if (tela == null) {   //Tela não está aberta, pode criar uma nova tela
@@ -55,6 +58,7 @@ public class TelaCadastroAluno extends TelaCadastro {
     }
     
     public TelaCadastroAluno() {
+        
         super("Cadastro de Alunos");
         adicionaCampo(2, 1, 1, 2, campoNome, ESQUERDA);
         adicionaCampo(2, 4, 1, 1, campoData, ESQUERDA);
@@ -69,9 +73,27 @@ public class TelaCadastroAluno extends TelaCadastro {
         adicionaCampo(6, 4, 1, 2, campoCelular, ESQUERDA);
         adicionaCampo(7, 1, 1, 2, campoEmail, ESQUERDA);
         adicionaCampo(7, 4, 1, 1, campoAtivo, ESQUERDA);
-        insereBotao(jbPesquisaCEP);
-        
+        insereBotao(jbPesquisaCEP);        
         pack();
         habilitarCampos(false);
     }
+
+    @Override
+    public void setPersistencia() {
+        aluno.setNome(title);
+        super.setPersistencia(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void incluir() {
+        super.incluir(); //To change body of generated methods, choose Tools | Templates.
+        
+    }
+
+    @Override
+    public boolean incluirBD() {
+        super.incluirBD(); //To change body of generated methods, choose Tools | Templates.
+        return AlunoDao.inserir(aluno);
+    }
+    
 }

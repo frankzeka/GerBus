@@ -6,58 +6,92 @@
 
 package pojo;
 
-import java.io.Serializable;
+
+import java.util.Date;
 
 /**
  *
  * @author professor
  */
-public class Aluno implements Serializable {
+public class Aluno extends Pessoa {
     //Versão da Classe, deve ser alterada a cada modificação.
-    private static final long serialVersionUID=1L; 
+    private static final long serialVersionUID=1L;
+    private String estado_civil;
+    private Date   data_nascimento;
+    private int    RG;
+    private int    CPF; 
     private String Nome;
     private String Endereco;
     private String Cidade;
+    private String Bairro;
+    private int    Cep;
+    private String Telefone;
+    private String Celular;
+    private String Email;
+    private boolean ativo;
 
     /**
-     * @return the Nome
+     * @return the serialVersionUID
      */
-    public String getNome() {
-        return Nome;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+   
+
+    /**
+     * @return the estado_civil
+     */
+    public String getEstado_civil() {
+        return estado_civil;
     }
 
     /**
-     * @param Nome the Nome to set
+     * @param estado_civil the estado_civil to set
      */
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setEstado_civil(String estado_civil) {
+        this.estado_civil = estado_civil;
     }
 
     /**
-     * @return the Endereco
+     * @return the data_nascimento
      */
-    public String getEndereco() {
-        return Endereco;
+    public Date getData_nascimento() {
+        return data_nascimento;
     }
 
     /**
-     * @param Endereco the Endereco to set
+     * @param data_nascimento the data_nascimento to set
      */
-    public void setEndereco(String Endereco) {
-        this.Endereco = Endereco;
+    public void setData_nascimento(Date data_nascimento) {
+        this.data_nascimento = data_nascimento;
     }
 
     /**
-     * @return the Cidade
+     * @return the RG
      */
-    public String getCidade() {
-        return Cidade;
+    public int getRG() {
+        return RG;
     }
 
     /**
-     * @param Cidade the Cidade to set
+     * @param RG the RG to set
      */
-    public void setCidade(String Cidade) {
-        this.Cidade = Cidade;
+    public void setRG(int RG) {
+        this.RG = RG;
     }
+
+    /**
+     * @return the CPF
+     */
+    public int getCPF() {
+        return CPF;
+    }
+
+    /**
+     * @param CPF the CPF to set
+     */
+    public void setCPF(int CPF) {
+        this.CPF = CPF;
+    }
+    
 }

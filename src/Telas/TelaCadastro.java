@@ -225,6 +225,7 @@ public class TelaCadastro extends JInternalFrame implements ActionListener {
     }
 
     public void setPersistencia() {
+        
     }
 
     public void consultarBD(int pk) {
