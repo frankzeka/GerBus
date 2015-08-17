@@ -6,9 +6,8 @@
 
 package Banco;
 
-import java.io.IOException;
-import org.prevayler.Prevayler;
-import org.prevayler.PrevaylerFactory;
+import Telas.TelaSistema;
+
 
 /**
  *
@@ -17,29 +16,8 @@ import org.prevayler.PrevaylerFactory;
 public class Main {
     
     
-    public static void main(String[] ignored) throws Exception{        
-        Prevayler prevayler = PrevaylerFactory.createPrevayler(new ListasdeAlunos(),"Banco");
-        salvaBD(prevayler);        
+    public static void main(String[] ignored) throws Exception{
+           new TelaSistema().setVisible(true);
     }
-    
-    static void salvaBD(Prevayler prevayler) throws Exception {
-        iniciaGUI(prevayler);
-        
-        while (true){
-            Thread.sleep(1000 * 20);
-            prevayler.takeSnapshot();
-            out("Banco Salvo as " + new java.util.Date() + "...");
-        }
-        
-    }
-    
-    static void iniciaGUI(Prevayler prevayler){
-        new Telas.TelaSistema(prevayler);
-    }
-    
-    private static void out(String message) {
-        System.out.println(message);
-    }   
-
 }        
 
