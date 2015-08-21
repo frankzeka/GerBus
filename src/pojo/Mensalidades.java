@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author User
  */
-public class Parcelas implements Serializable{
+public class Mensalidades implements Serializable{
     private static final long serialVersionUID=1L;
     private Date Data_Pagamento;
     private double valor;

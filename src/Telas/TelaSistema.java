@@ -33,11 +33,11 @@ public class TelaSistema extends javax.swing.JFrame {
 
         painelprincipal = new javax.swing.JPanel();
         cadastro = new javax.swing.JButton();
-        Venda = new javax.swing.JButton();
+        Movimentacao = new javax.swing.JButton();
         relatorios = new javax.swing.JButton();
         painelcadastro = new javax.swing.JPanel();
         CadastroAssociado = new javax.swing.JButton();
-        CadastroFuncionario = new javax.swing.JButton();
+        CadastroPJuridica = new javax.swing.JButton();
         painelrelatorio = new javax.swing.JPanel();
         relatorioestoque = new javax.swing.JButton();
         relatorioclientes = new javax.swing.JButton();
@@ -58,15 +58,25 @@ public class TelaSistema extends javax.swing.JFrame {
                 cadastroMouseClicked(evt);
             }
         });
-        painelprincipal.add(cadastro);
-
-        Venda.setText("Movimentação");
-        Venda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                VendaMouseClicked(evt);
+        cadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroActionPerformed(evt);
             }
         });
-        painelprincipal.add(Venda);
+        painelprincipal.add(cadastro);
+
+        Movimentacao.setText("Movimentação");
+        Movimentacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MovimentacaoMouseClicked(evt);
+            }
+        });
+        Movimentacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MovimentacaoActionPerformed(evt);
+            }
+        });
+        painelprincipal.add(Movimentacao);
 
         relatorios.setText("relatorios");
         relatorios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,15 +100,20 @@ public class TelaSistema extends javax.swing.JFrame {
                 CadastroAssociadoMouseClicked(evt);
             }
         });
-        painelcadastro.add(CadastroAssociado);
-
-        CadastroFuncionario.setText("Cadastro Pessoa Juridica");
-        CadastroFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CadastroFuncionarioMouseClicked(evt);
+        CadastroAssociado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroAssociadoActionPerformed(evt);
             }
         });
-        painelcadastro.add(CadastroFuncionario);
+        painelcadastro.add(CadastroAssociado);
+
+        CadastroPJuridica.setText("Cadastro Pessoa Juridica");
+        CadastroPJuridica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadastroPJuridicaMouseClicked(evt);
+            }
+        });
+        painelcadastro.add(CadastroPJuridica);
 
         painelrelatorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         painelrelatorio.setLayout(new java.awt.GridLayout(1, 0));
@@ -157,16 +172,15 @@ public class TelaSistema extends javax.swing.JFrame {
         
     }//GEN-LAST:event_CadastroAssociadoMouseClicked
 
-    private void CadastroFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastroFuncionarioMouseClicked
+    private void CadastroPJuridicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastroPJuridicaMouseClicked
         // TODO add your handling code here:
-       
+        new CadastroJuridica().setVisible(true);   
+    }//GEN-LAST:event_CadastroPJuridicaMouseClicked
 
-    }//GEN-LAST:event_CadastroFuncionarioMouseClicked
-
-    private void VendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VendaMouseClicked
+    private void MovimentacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MovimentacaoMouseClicked
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_VendaMouseClicked
+        new Movimentacao().setVisible(true);
+    }//GEN-LAST:event_MovimentacaoMouseClicked
 
     private void relatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriosActionPerformed
         // TODO add your handling code here:
@@ -202,6 +216,19 @@ public class TelaSistema extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_relatorioclientesActionPerformed
+
+    private void MovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MovimentacaoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_MovimentacaoActionPerformed
+
+    private void CadastroAssociadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroAssociadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CadastroAssociadoActionPerformed
+
+    private void cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,8 +273,8 @@ public class TelaSistema extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadastroAssociado;
-    private javax.swing.JButton CadastroFuncionario;
-    private javax.swing.JButton Venda;
+    private javax.swing.JButton CadastroPJuridica;
+    private javax.swing.JButton Movimentacao;
     private javax.swing.JButton cadastro;
     private javax.swing.JPanel painelcadastro;
     private javax.swing.JPanel painelprincipal;

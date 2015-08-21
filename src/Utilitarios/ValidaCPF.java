@@ -4,16 +4,20 @@
  * and open the template in the editor.
  */
 
-package Telas;
+package Utilitarios;
 
 import java.util.InputMismatchException;
+import javax.swing.JOptionPane;
+import org.jdesktop.beansbinding.Validator;
 
 /**
  *
- * @author aluno2
+ * @author professor
  */
-public class validacpf {
-    public static boolean isCPF(String CPF){
+public class ValidaCPF extends Validator<String>{
+    
+    public Validator.Result validate(String CPF) {        
+
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
             if(CPF.equals("00000000000")|| CPF.equals("11111111111")||
                 CPF.equals("22222222222")|| CPF.equals("33333333333")||
@@ -21,7 +25,7 @@ public class validacpf {
                 CPF.equals("66666666666")|| CPF.equals("77777777777")||
                 CPF.equals("88888888888")|| CPF.equals("99999999999")||
                     (CPF.length()!= 11))
-                    return(false);
+                    return new Validator.Result(null, "CPF Inválido");
             char dig10, dig11;
             int sm, i, r, num, peso;
             
@@ -60,15 +64,10 @@ public class validacpf {
                 
                 // verifica se os digitos calculados conferem com os digitos informados.
                 if ((dig10 == CPF.charAt(9))&&(dig11 == CPF.charAt(10)))
-                    return(true);
-                else return(false);
+                    return null;
+                else return new Validator.Result(null, "CPF Inválido");
             } catch (InputMismatchException erro){
-                return(false);
+                return new Validator.Result(null, "CPF Inválido");
             }
     }
-    
-    public static String imprimeCPF(String CPF){
-        return(CPF.substring(0,3) + "." + CPF.substring(3,6) + "." +
-                CPF.substring(6,9) + "." + CPF.substring(9, 11));
-                }
-            }
+}

@@ -24,10 +24,10 @@ public class Associados implements Serializable {
     private String Endereco;
     private String Cidade;
     private String Bairro;
-    private int    Cep;
+    private String Cep;
     private String Telefone;
-    private int    RG;
-    private int    CPF;
+    private String RG;
+    private String CPF;
     private String Email;
     private boolean ativo;
     
@@ -52,11 +52,11 @@ public class Associados implements Serializable {
         return data_nascimento;
     }
 
-    public int getRG() {
+    public String getRG() {
         return RG;
     }
 
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
@@ -76,7 +76,7 @@ public class Associados implements Serializable {
         return Bairro;
     }
 
-    public int getCep() {
+    public String getCep() {
         return Cep;
     }
 
@@ -95,15 +95,21 @@ public class Associados implements Serializable {
      // <editor-fold defaultstate="collapsed" desc="Setters">    
 
     public void setData_nascimento(Date data_nascimento) {
-        this.data_nascimento = data_nascimento;        
+        Date DtNascVelho = this.data_nascimento;
+        this.data_nascimento = data_nascimento;
+        changeSupport.firePropertyChange("DtNasc", DtNascVelho, data_nascimento);        
     }
 
-    public void setRG(int RG) {
+    public void setRG(String RG) {
+        String RGVelho = this.RG;
         this.RG = RG;
+        changeSupport.firePropertyChange("RG", RGVelho, RG);
     }
 
-    public void setCPF(int CPF) {
+    public void setCPF(String CPF) {
+        String CPFVelho = this.CPF;
         this.CPF = CPF;
+        changeSupport.firePropertyChange("CPF", CPFVelho, CPF);
     }
 
     public void setNome(String Nome) {
@@ -113,34 +119,62 @@ public class Associados implements Serializable {
     }
 
     public void setEndereco(String Endereco) {
+        String EnderecoVelho = this.Endereco;
         this.Endereco = Endereco;
+        changeSupport.firePropertyChange("Endereco", EnderecoVelho, Endereco);
     }
 
     public void setCidade(String Cidade) {
+        String CidadeVelha = this.Cidade;
         this.Cidade = Cidade;
+        changeSupport.firePropertyChange("Cidade", CidadeVelha, Cidade);
     }
 
     public void setBairro(String Bairro) {
+        String BairroVelho = this.Bairro;
         this.Bairro = Bairro;
+        changeSupport.firePropertyChange("Bairro", BairroVelho, RG);
     }
 
-    public void setCep(int Cep) {
+    public void setCep(String Cep) {
+        String CEPVelho = this.Cep;
         this.Cep = Cep;
+        changeSupport.firePropertyChange("CEP", CEPVelho, Cep);
     }
 
     public void setTelefone(String Telefone) {
+        String TelefoneVelho = this.Telefone;
         this.Telefone = Telefone;
+        changeSupport.firePropertyChange("Telefone", TelefoneVelho, Telefone);
     }
 
     public void setEmail(String Email) {
+        String EmailVelho = this.Email;
         this.Email = Email;
+        changeSupport.firePropertyChange("Email", EmailVelho, Email);
     }
 
     public void setAtivo(boolean ativo) {
         boolean oldAtivo = this.ativo;
         this.ativo = ativo;
-        changeSupport.firePropertyChange("ativo", oldAtivo,ativo);
+        changeSupport.firePropertyChange("Ativo", oldAtivo,ativo);
     }
     // </editor-fold>
+    
+    public static Associados Limpa(){
+        Associados novo = new Associados();
+        novo.setNome("");
+        novo.setAtivo(true);
+        novo.setBairro("");
+        novo.setCPF("");
+        novo.setCep("");
+        novo.setCidade("");
+        novo.setData_nascimento(null);
+        novo.setEmail(null);
+        novo.setEndereco(null);
+        novo.setRG("");
+        novo.setTelefone(null);
+        return novo;
+    }
     
 }

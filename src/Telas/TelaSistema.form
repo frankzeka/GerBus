@@ -83,14 +83,16 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadastroMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Venda">
+        <Component class="javax.swing.JButton" name="Movimentacao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Movimenta&#xe7;&#xe3;o"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="VendaMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MovimentacaoMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MovimentacaoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="relatorios">
@@ -124,14 +126,15 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CadastroAssociadoMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadastroAssociadoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="CadastroFuncionario">
+        <Component class="javax.swing.JButton" name="CadastroPJuridica">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro Pessoa Juridica"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CadastroFuncionarioMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CadastroPJuridicaMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

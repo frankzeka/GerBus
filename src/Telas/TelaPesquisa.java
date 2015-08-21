@@ -179,10 +179,10 @@ public class TelaPesquisa extends javax.swing.JDialog {
      //if (testa.exists()){ 
 
      //}
-        ficha = fichario.get(0);
-        DefaultTableModel dtm = (DefaultTableModel) Tabela.getModel();
-        Object linha[] = {ficha.getNome(), ficha.getTelefone(), ficha.getCPF()};
-        dtm.addRow(linha); 
+        //ficha = fichario.get(0);
+        //DefaultTableModel dtm = (DefaultTableModel) Tabela.getModel();
+        //Object linha[] = {ficha.getNome(), ficha.getTelefone(), ficha.getCPF()};
+        //dtm.addRow(linha); 
     }//GEN-LAST:event_formWindowOpened
 
     private void PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarActionPerformed
