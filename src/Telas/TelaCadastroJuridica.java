@@ -15,16 +15,16 @@ import pojo.PJuridica;
  *
  * @author 00
  */
-public class CadastroJuridica extends javax.swing.JFrame {
+public class TelaCadastroJuridica extends javax.swing.JFrame {
     private PJuridica ficha = new PJuridica();
     private ArrayList<PJuridica> fichario = new ArrayList<>();
     private Banco banco = new Banco();    
 
 
     /**
-     * Creates new form CadastroJuridica
+     * Creates new form TelaCadastroJuridica
      */
-    public CadastroJuridica() {
+    public TelaCadastroJuridica() {
                 //Centraliza a janela
         setLocationRelativeTo(null);          
         //Carrega os dados na memória
@@ -96,6 +96,11 @@ public class CadastroJuridica extends javax.swing.JFrame {
         Alterar2.setText("Alterar");
 
         Consutar.setText("Consutar");
+        Consutar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsutarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -213,6 +218,12 @@ public class CadastroJuridica extends javax.swing.JFrame {
                     
     }//GEN-LAST:event_SalvarActionPerformed
 
+    private void ConsutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsutarActionPerformed
+        // TODO add your handling code here:
+        TelaPesquisa tela = new TelaPesquisa(new javax.swing.JFrame(), true, fichario);
+        tela.setVisible(true);
+    }//GEN-LAST:event_ConsutarActionPerformed
+
     
     public PJuridica getFicha() {
         return ficha;
@@ -244,20 +255,20 @@ public class CadastroJuridica extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 new CadastroJuridica().setVisible(true);
+                 new TelaCadastroJuridica().setVisible(true);
             }
         });
     }

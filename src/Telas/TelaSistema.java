@@ -174,12 +174,12 @@ public class TelaSistema extends javax.swing.JFrame {
 
     private void CadastroPJuridicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastroPJuridicaMouseClicked
         // TODO add your handling code here:
-        new CadastroJuridica().setVisible(true);   
+        new TelaCadastroJuridica().setVisible(true);   
     }//GEN-LAST:event_CadastroPJuridicaMouseClicked
 
     private void MovimentacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MovimentacaoMouseClicked
         // TODO add your handling code here:
-        new Movimentacao().setVisible(true);
+        new TelaCaixa().setVisible(true);
     }//GEN-LAST:event_MovimentacaoMouseClicked
 
     private void relatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriosActionPerformed

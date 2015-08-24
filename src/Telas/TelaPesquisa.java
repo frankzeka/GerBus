@@ -4,8 +4,6 @@
  */
 package Telas;
 
-import Banco.Banco;
-import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -231,8 +229,7 @@ public class TelaPesquisa extends javax.swing.JDialog {
     }//GEN-LAST:event_NovoActionPerformed
    
     public Integer retorna(){
-        return achados.get(Tabela.getSelectedRow());
-        
+        return achados.get(Tabela.getSelectedRow());        
     }
     /**
      * @param args the command line arguments
