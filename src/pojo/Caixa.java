@@ -18,24 +18,26 @@ public class Caixa implements Serializable {
     //Versão da Classe, deve ser alterada a cada modificação.
     private static final long serialVersionUID=1L;
 
-    /**
-     * @return the serialVersionUID
-     */
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
     private int codigo;
     private Date Data;
     private ArrayList<Transacao> transacoes;
-    private String CodigoFiscal;    
+        
 
+    // <editor-fold defaultstate="collapsed" desc="Getters">
     /**
      * @return the codigo
      */
     public int getCodigo() {
         return codigo;
     }
-
+    
+    /**
+     * @return the serialVersionUID
+     */
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+    
     /**
      * @return the Data
      */
@@ -49,14 +51,9 @@ public class Caixa implements Serializable {
     public ArrayList<Transacao> getTransacoes() {
         return transacoes;
     }
-
-    /**
-     * @return the CodigoFiscal
-     */
-    public String getCodigoFiscal() {
-        return CodigoFiscal;
-    }
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Setters">     
     /**
      * @param codigo the codigo to set
      */
@@ -78,10 +75,6 @@ public class Caixa implements Serializable {
         this.transacoes = transacoes;
     }
 
-    /**
-     * @param CodigoFiscal the CodigoFiscal to set
-     */
-    public void setCodigoFiscal(String CodigoFiscal) {
-        this.CodigoFiscal = CodigoFiscal;
-    }
+    // </editor-fold>
+    
 }

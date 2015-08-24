@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,14 +56,16 @@ public class Banco {
                     return objeto;
                 } catch (ClassNotFoundException ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao carregar os dados");
+                    return new ArrayList();
                 } 
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "Erro de Leitura");
+                return new ArrayList();
             }
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Arquivo não encontrado.");
-        }
-       return null;       
+            return new ArrayList();
+        }     
     } 
     
 }

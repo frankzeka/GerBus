@@ -24,6 +24,8 @@ public class Transacao implements Serializable {
     }
     private String operacao;
     private double valor;
+    private String CodigoFiscal;
+    
 
     /**
      * @return the operacao
@@ -38,7 +40,14 @@ public class Transacao implements Serializable {
     public double getValor() {
         return valor;
     }
-
+    
+    /**
+     * @return the CodigoFiscal
+     */
+    public String getCodigoFiscal() {
+        return CodigoFiscal;
+    }   
+    
     /**
      * @param operacao the operacao to set
      */
@@ -52,4 +61,12 @@ public class Transacao implements Serializable {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    /**
+     * @param CodigoFiscal the CodigoFiscal to set
+     */
+    public void setCodigoFiscal(String CodigoFiscal) {
+        this.CodigoFiscal = CodigoFiscal;
+    }    
+
 }

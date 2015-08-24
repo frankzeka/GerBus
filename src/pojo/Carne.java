@@ -18,7 +18,7 @@ public class Carne implements Serializable {
     //Versão da Classe, deve ser alterada a cada modificação.
     private static final long serialVersionUID=1L; 
     private int Ano_Referencia;
-    private int cpf;
+    private String cpf;
     private Date inicio;
     private int N_parcelas;
     //Grava as parcelas no carne (Código da parcela)
@@ -42,7 +42,7 @@ public class Carne implements Serializable {
     /**
      * @return the cpf
      */
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
@@ -72,7 +72,7 @@ public class Carne implements Serializable {
     /**
      * @param cpf the cpf to set
      */
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

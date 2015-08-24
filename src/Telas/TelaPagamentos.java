@@ -17,6 +17,8 @@ import pojo.Transacao;
 public class TelaPagamentos extends javax.swing.JDialog{
     private ArrayList<PJuridica> FicharioPJuridica = new ArrayList<>();
     private Transacao transacao = new Transacao();
+    private PJuridica FichaPJuridica = new PJuridica();
+    private int encontrado =-1;
    
 
     /**
@@ -43,14 +45,14 @@ public class TelaPagamentos extends javax.swing.JDialog{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        Pessoa = new javax.swing.JTextField();
         Busca = new javax.swing.JButton();
         Finalizar = new javax.swing.JButton();
         Valor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pessoa Física"));
+        Pessoa.setBorder(javax.swing.BorderFactory.createTitledBorder("Pessoa Física"));
 
         Busca.setText("Busca");
         Busca.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +78,7 @@ public class TelaPagamentos extends javax.swing.JDialog{
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                        .addComponent(Pessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Busca, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -90,7 +92,7 @@ public class TelaPagamentos extends javax.swing.JDialog{
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Pessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Busca, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -105,14 +107,20 @@ public class TelaPagamentos extends javax.swing.JDialog{
     private void BuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscaActionPerformed
         // TODO add your handling code here:        
             TelaPesquisa tela = new TelaPesquisa(new javax.swing.JFrame(), true, FicharioPJuridica);
-            tela.setVisible(true);    
+            tela.setVisible(true);
+            encontrado=tela.retorna(); //pega o associado encontrado
+            if(encontrado!=-1){
+                FichaPJuridica = FicharioPJuridica.get(encontrado);
+                Pessoa.setText(FichaPJuridica.getRazaoSocial());
+                transacao.setCodigoFiscal(FichaPJuridica.getCNPJ());                
+            }
     }//GEN-LAST:event_BuscaActionPerformed
 
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:        
         transacao.setOperacao("D");
         transacao.setValor(Double.valueOf(Valor.getText()));
-        
+        this.dispose();
     }//GEN-LAST:event_FinalizarActionPerformed
     
     public Transacao retorna(){
@@ -150,7 +158,7 @@ public class TelaPagamentos extends javax.swing.JDialog{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Busca;
     private javax.swing.JButton Finalizar;
+    private javax.swing.JTextField Pessoa;
     private javax.swing.JTextField Valor;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
