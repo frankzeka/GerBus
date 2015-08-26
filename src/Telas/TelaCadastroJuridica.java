@@ -18,6 +18,7 @@ import pojo.PJuridica;
 public class TelaCadastroJuridica extends javax.swing.JFrame {
     private PJuridica ficha = new PJuridica();
     private ArrayList<PJuridica> fichario = new ArrayList<>();
+    private int encontrado =-1;
     private Banco banco = new Banco();    
 
 
@@ -25,11 +26,10 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
      * Creates new form TelaCadastroJuridica
      */
     public TelaCadastroJuridica() {
-                //Centraliza a janela
+        //Centraliza a janela
         setLocationRelativeTo(null);          
         //Carrega os dados na memória
-        fichario = (ArrayList<PJuridica>) banco.Carregar("pjuridica.db");        
-        this.setFicha(ficha);
+        fichario = (ArrayList<PJuridica>) banco.Carregar("pjuridica.db");       
         //Inicializa todos os componentes da Janela.
         initComponents();
         Saida.setText("Registros:"+fichario);
@@ -220,8 +220,16 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
 
     private void ConsutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsutarActionPerformed
         // TODO add your handling code here:
-        TelaPesquisa tela = new TelaPesquisa(new javax.swing.JFrame(), true, fichario);
+        TelaPesquisaPJuridica tela = new TelaPesquisaPJuridica(new javax.swing.JFrame(), true, fichario);
         tela.setVisible(true);
+        encontrado=tela.retorna();
+        JOptionPane.showMessageDialog(rootPane, "encontrado"+encontrado);
+        if (encontrado != -1){
+            ficha=fichario.get(encontrado);
+            this.setFicha(ficha);
+            this.repaint();
+        }
+        
     }//GEN-LAST:event_ConsutarActionPerformed
 
     

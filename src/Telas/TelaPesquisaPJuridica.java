@@ -7,24 +7,24 @@ package Telas;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import pojo.Associados;
+import pojo.PJuridica;
 
 
 /**
  *
  * @author info48
  */
-public class TelaPesquisa extends javax.swing.JDialog {
-    Associados ficha  = new Associados();
-    ArrayList<Associados>  fichario = new ArrayList<>();
-    ArrayList<Integer>  achados = new ArrayList<Integer>();
+public class TelaPesquisaPJuridica extends javax.swing.JDialog {
+    PJuridica ficha  = new PJuridica();
+    ArrayList<PJuridica> fichario = new ArrayList<>();
+    ArrayList<Integer> achados = new ArrayList<Integer>();
        
   
     /**
      * Creates new form PesquisaCliente
      */
-    public TelaPesquisa(java.awt.Frame parent, boolean modal, ArrayList fichario) {
-        super(parent,modal);
+    public TelaPesquisaPJuridica(java.awt.Frame parent, boolean modal, ArrayList fichario) {
+        super(parent,modal);        
         this.fichario = fichario;
         initComponents();        
     }
@@ -44,7 +44,6 @@ public class TelaPesquisa extends javax.swing.JDialog {
         Pesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
-        aluno = new javax.swing.JLabel();
         alterar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         Novo = new javax.swing.JButton();
@@ -70,7 +69,7 @@ public class TelaPesquisa extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Nome", "Telefone", "C.P.F"
+                "Nome", "Telefone", "CNPJ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -82,8 +81,6 @@ public class TelaPesquisa extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(Tabela);
-
-        aluno.setText("Direitos Reservados by Rai");
 
         alterar.setText("Alterar");
         alterar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,9 +130,7 @@ public class TelaPesquisa extends javax.swing.JDialog {
                 .addComponent(cancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(aluno)
-                .addGap(53, 53, 53))
+                .addGap(255, 255, 255))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +145,6 @@ public class TelaPesquisa extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aluno)
                     .addComponent(alterar)
                     .addComponent(cancelar)
                     .addComponent(Novo))
@@ -190,10 +184,9 @@ public class TelaPesquisa extends javax.swing.JDialog {
         DefaultTableModel dtm = (DefaultTableModel) Tabela.getModel();
         for (int x=0; x<total;x++){ //for
            ficha = fichario.get(x);//pega a ficha atual
-           if(ficha.getNome().startsWith(EntradaNome.getText())){
-               achados.add(x);
-               
-                Object linha[] = {ficha.getNome(), ficha.getTelefone(), ficha.getCPF()};
+           if(ficha.getRazaoSocial().startsWith(EntradaNome.getText())){
+                achados.add(x);               
+                Object linha[] = {ficha.getRazaoSocial(), ficha.getTelefone(), ficha.getCNPJ()};
                 dtm.addRow(linha);               
                encontrou = true;
            }
@@ -201,9 +194,9 @@ public class TelaPesquisa extends javax.swing.JDialog {
    
         }  
         if(!encontrou){
-            JOptionPane.showMessageDialog(null, "nome nao encontrado.", "Agenda", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "nome nao encontrado.", "Pesquisa", JOptionPane.INFORMATION_MESSAGE);
         }else{
-       JOptionPane.showMessageDialog(null, "encontrado com sucesso.", "SmartGas", JOptionPane.INFORMATION_MESSAGE);
+       JOptionPane.showMessageDialog(null, "encontrado com sucesso.", "Pesquisa", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_PesquisarActionPerformed
 
@@ -248,13 +241,13 @@ public class TelaPesquisa extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPesquisaPJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPesquisaPJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPesquisaPJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPesquisa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPesquisaPJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
        
@@ -267,7 +260,6 @@ public class TelaPesquisa extends javax.swing.JDialog {
     private javax.swing.JButton Pesquisar;
     private javax.swing.JTable Tabela;
     private javax.swing.JButton alterar;
-    private javax.swing.JLabel aluno;
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

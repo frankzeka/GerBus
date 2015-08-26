@@ -26,7 +26,7 @@ public class Transacao implements Serializable {
     private double valor;
     private String CodigoFiscal;
     
-
+    // <editor-fold defaultstate="collapsed" desc="Getters">
     /**
      * @return the operacao
      */
@@ -51,6 +51,9 @@ public class Transacao implements Serializable {
     /**
      * @param operacao the operacao to set
      */
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Setters">
     public void setOperacao(String operacao) {
         this.operacao = operacao;
     }
@@ -68,5 +71,6 @@ public class Transacao implements Serializable {
     public void setCodigoFiscal(String CodigoFiscal) {
         this.CodigoFiscal = CodigoFiscal;
     }    
-
+    // </editor-fold>
+    
 }

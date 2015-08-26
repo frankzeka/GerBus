@@ -6,6 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
@@ -68,9 +69,7 @@
                   <Component id="cancelar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="Novo" min="-2" pref="83" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="aluno" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,7 +87,6 @@
                   <Component id="jScrollPane1" min="-2" pref="196" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="aluno" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="alterar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Novo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -127,18 +125,13 @@
                   <Table columnCount="3" rowCount="0">
                     <Column editable="false" title="Nome" type="java.lang.Object"/>
                     <Column editable="false" title="Telefone" type="java.lang.Object"/>
-                    <Column editable="false" title="C.P.F" type="java.lang.Object"/>
+                    <Column editable="false" title="CNPJ" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="aluno">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Direitos Reservados by Rai"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="alterar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alterar"/>
