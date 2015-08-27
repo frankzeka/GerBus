@@ -26,6 +26,8 @@ public class TelaPesquisaAssociados extends javax.swing.JDialog {
     public TelaPesquisaAssociados(java.awt.Frame parent, boolean modal, ArrayList fichario) {
         super(parent,modal);        
         this.fichario = fichario;
+        //Centraliza a janela
+        setLocationRelativeTo(null);
         initComponents();        
     }
 

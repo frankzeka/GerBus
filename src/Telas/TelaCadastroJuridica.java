@@ -220,18 +220,23 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
 
     private void ConsutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsutarActionPerformed
         // TODO add your handling code here:
+        PJuridica retorno = new PJuridica();
         TelaPesquisaPJuridica tela = new TelaPesquisaPJuridica(new javax.swing.JFrame(), true, fichario);
         tela.setVisible(true);
         encontrado=tela.retorna();
         JOptionPane.showMessageDialog(rootPane, "encontrado"+encontrado);
         if (encontrado != -1){
-            ficha=fichario.get(encontrado);
-            this.setFicha(ficha);
-            this.repaint();
+            retorno=fichario.get(encontrado);
+            this.setFicha(retorno);
         }
         
     }//GEN-LAST:event_ConsutarActionPerformed
 
+     /**
+     * Returns <code>PJuridica</code> being edited.
+     * 
+     * @return <code>ficha</code> being edited.
+     */  
     
     public PJuridica getFicha() {
         return ficha;
@@ -239,11 +244,11 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
     /** 
      * Sets ficha to edit.
      * 
-     * @param ficha ficha to edit.
+     * @param nova ficha to edit.
      */    
-    public void setFicha(PJuridica ficha){
+    public void setFicha(PJuridica nova){
         PJuridica FichaVelha = this.ficha;
-        this.ficha = ficha;
+        this.ficha = nova;
         firePropertyChange("ficha", FichaVelha, ficha);          
     }
     /**
