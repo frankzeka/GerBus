@@ -32,7 +32,7 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
         fichario = (ArrayList<PJuridica>) banco.Carregar("pjuridica.db");       
         //Inicializa todos os componentes da Janela.
         initComponents();
-        Saida.setText("Registros:"+fichario);
+        Saida.setText("Registros:"+fichario.size());
          //Loga se a vinculação deu certo ou errado. 
         bindingGroup.addBindingListener(new LoggingBindingListener(Saida));
     }
@@ -63,7 +63,6 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         Telefone = new javax.swing.JTextField();
         Salvar = new javax.swing.JButton();
-        Alterar2 = new javax.swing.JButton();
         Consutar = new javax.swing.JButton();
         Saida = new javax.swing.JLabel();
 
@@ -80,11 +79,29 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${ficha.razaoSocial}"), RazaoSocial, org.jdesktop.beansbinding.BeanProperty.create("text"), "RazaoSocial");
         bindingGroup.addBinding(binding);
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${ficha.cidade}"), Cidade, org.jdesktop.beansbinding.BeanProperty.create("text"), "Cidade");
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${ficha.endereco}"), Endereco, org.jdesktop.beansbinding.BeanProperty.create("text"), "Endereco");
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${ficha.bairro}"), Bairro, org.jdesktop.beansbinding.BeanProperty.create("text"), "Bairro");
+        bindingGroup.addBinding(binding);
+
         jLabel7.setText("CNPJ :");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${ficha.CNPJ}"), CNPJ, org.jdesktop.beansbinding.BeanProperty.create("text"), "CNPJ");
+        bindingGroup.addBinding(binding);
 
         jLabel8.setText("CEP :");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${ficha.cep}"), CEP, org.jdesktop.beansbinding.BeanProperty.create("text"), "CEP");
+        bindingGroup.addBinding(binding);
+
         jLabel10.setText("Telefone:");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${ficha.telefone}"), Telefone, org.jdesktop.beansbinding.BeanProperty.create("text"), "Telefone");
+        bindingGroup.addBinding(binding);
 
         Salvar.setText("Salvar");
         Salvar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,8 +109,6 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
                 SalvarActionPerformed(evt);
             }
         });
-
-        Alterar2.setText("Alterar");
 
         Consutar.setText("Consutar");
         Consutar.addActionListener(new java.awt.event.ActionListener() {
@@ -145,9 +160,7 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(177, 177, 177)
                         .addComponent(Salvar)
-                        .addGap(18, 18, 18)
-                        .addComponent(Alterar2)
-                        .addGap(18, 18, 18)
+                        .addGap(84, 84, 84)
                         .addComponent(Consutar)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -179,7 +192,6 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Salvar)
-                    .addComponent(Alterar2)
                     .addComponent(Consutar)))
         );
 
@@ -207,15 +219,20 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
         // TODO add your handling code here:
+        PJuridica novo = new PJuridica();
          if(Saida.getText() == ""){
-            fichario.add(ficha);
-            banco.Salva(fichario, "PJuridica.db"); 
-            ficha = new PJuridica();
-            this.setFicha(ficha);
-        }else{
-            JOptionPane.showMessageDialog(null, "Dados Inválidos, verifique!"+Saida.getText()+" <-aqui");
-        }
-                    
+             if (encontrado != -1){
+                 fichario.set(encontrado, ficha);
+                 banco.Salva(fichario, "PJuridica.db");
+                 this.setFicha(novo);
+             }else{
+                 fichario.add(ficha);
+                 banco.Salva(fichario, "PJuridica.db");
+                 this.setFicha(novo);
+             }
+            }else{
+             JOptionPane.showMessageDialog(null, "Dados Inválidos, verifique!"+Saida.getText()+" <-aqui");        
+         }       
     }//GEN-LAST:event_SalvarActionPerformed
 
     private void ConsutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsutarActionPerformed
@@ -287,7 +304,6 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Alterar2;
     private javax.swing.JTextField Bairro;
     private javax.swing.JTextField CEP;
     private javax.swing.JTextField CNPJ;

@@ -21,7 +21,7 @@ public class PJuridica implements Serializable{
     private String Endereco;
     private String Cidade;
     private String Bairro;
-    private String  Cep;
+    private String Cep;
     private String Telefone;
     
     // <editor-fold defaultstate="collapsed" desc="Escuta mudancas">
@@ -148,7 +148,7 @@ public class PJuridica implements Serializable{
     public void setCep(String Cep) {
         String CepVelho = this.Cep;
         this.Cep = Cep;
-        changeSupport.firePropertyChange("Cep", CepVelho, Cep);
+        changeSupport.firePropertyChange("CEP", CepVelho, Cep);
     }
 
     /**

@@ -92,9 +92,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                           <Component id="Salvar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="Alterar2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                           <Component id="Consutar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -133,7 +131,6 @@
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Salvar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Alterar2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Consutar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -170,10 +167,28 @@
           </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="Cidade">
+          <BindingProperties>
+            <BindingProperty name="text" source="Form" sourcePath="${ficha.cidade}" target="Cidade" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+              <Property name="name" type="java.lang.String" value="Cidade"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="Endereco">
+          <BindingProperties>
+            <BindingProperty name="text" source="Form" sourcePath="${ficha.endereco}" target="Endereco" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+              <Property name="name" type="java.lang.String" value="Endereco"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="Bairro">
+          <BindingProperties>
+            <BindingProperty name="text" source="Form" sourcePath="${ficha.bairro}" target="Bairro" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+              <Property name="name" type="java.lang.String" value="Bairro"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -181,6 +196,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="CNPJ">
+          <BindingProperties>
+            <BindingProperty name="text" source="Form" sourcePath="${ficha.CNPJ}" target="CNPJ" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+              <Property name="name" type="java.lang.String" value="CNPJ"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -188,6 +209,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="CEP">
+          <BindingProperties>
+            <BindingProperty name="text" source="Form" sourcePath="${ficha.cep}" target="CEP" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+              <Property name="name" type="java.lang.String" value="CEP"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -195,6 +222,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Telefone">
+          <BindingProperties>
+            <BindingProperty name="text" source="Form" sourcePath="${ficha.telefone}" target="Telefone" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+              <Property name="name" type="java.lang.String" value="Telefone"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JButton" name="Salvar">
           <Properties>
@@ -203,11 +236,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalvarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="Alterar2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Alterar"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="Consutar">
           <Properties>

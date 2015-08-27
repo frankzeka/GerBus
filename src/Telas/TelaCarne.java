@@ -30,6 +30,7 @@ public class TelaCarne extends javax.swing.JDialog {
     public TelaCarne(java.awt.Frame parent, boolean modal, String CPF) {
         carnes = (ArrayList<Carne>) banco.Carregar("carnes.db");        
         carne.setCpf(CPF);
+        this.setFicha(carne);
         initComponents();
     }
 
@@ -211,6 +212,27 @@ public class TelaCarne extends javax.swing.JDialog {
         this.dispose();        
     }//GEN-LAST:event_SalvarActionPerformed
 
+         /**
+     * Returns <code>PJuridica</code> being edited.
+     * 
+     * @return <code>ficha</code> being edited.
+     */  
+    
+    public Carne getFicha() {
+        return carne;
+    }
+    /** 
+     * Sets ficha to edit.
+     * 
+     * @param nova ficha to edit.
+     */    
+    public void setFicha(Carne nova){
+        Carne FichaVelha = this.carne;
+        this.carne = nova;
+        firePropertyChange("ficha", FichaVelha, carne);          
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
