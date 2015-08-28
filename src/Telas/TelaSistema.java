@@ -4,8 +4,13 @@
  */
 package Telas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -13,12 +18,12 @@ import java.util.logging.Logger;
  */
 public class TelaSistema extends javax.swing.JFrame {
 
-    /**
+     /**
      * Creates new form TelaPrincipal
      */
     public TelaSistema() {
-        initComponents();
-        
+        initComponents();       
+
        this.setExtendedState(MAXIMIZED_BOTH);  
     }
 
@@ -31,26 +36,33 @@ public class TelaSistema extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Logo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         painelprincipal = new javax.swing.JPanel();
         cadastro = new javax.swing.JButton();
         Movimentacao = new javax.swing.JButton();
         relatorios = new javax.swing.JButton();
         painelcadastro = new javax.swing.JPanel();
-        CadastroAssociado = new javax.swing.JButton();
         CadastroPJuridica = new javax.swing.JButton();
+        CadastroAssociado = new javax.swing.JButton();
         painelrelatorio = new javax.swing.JPanel();
-        relatorioestoque = new javax.swing.JButton();
+        relatoriocaixa = new javax.swing.JButton();
         relatorioclientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(254, 254, 254));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
+        Logo.setBackground(new java.awt.Color(254, 254, 254));
+        Logo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.jpg"))); // NOI18N
+
         painelprincipal.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        painelprincipal.setLayout(new java.awt.GridLayout(4, 0));
 
         cadastro.setText("cadastros");
         cadastro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -63,7 +75,6 @@ public class TelaSistema extends javax.swing.JFrame {
                 cadastroActionPerformed(evt);
             }
         });
-        painelprincipal.add(cadastro);
 
         Movimentacao.setText("Movimentação");
         Movimentacao.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,7 +87,6 @@ public class TelaSistema extends javax.swing.JFrame {
                 MovimentacaoActionPerformed(evt);
             }
         });
-        painelprincipal.add(Movimentacao);
 
         relatorios.setText("relatorios");
         relatorios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,10 +99,34 @@ public class TelaSistema extends javax.swing.JFrame {
                 relatoriosActionPerformed(evt);
             }
         });
-        painelprincipal.add(relatorios);
+
+        javax.swing.GroupLayout painelprincipalLayout = new javax.swing.GroupLayout(painelprincipal);
+        painelprincipal.setLayout(painelprincipalLayout);
+        painelprincipalLayout.setHorizontalGroup(
+            painelprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(relatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        painelprincipalLayout.setVerticalGroup(
+            painelprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelprincipalLayout.createSequentialGroup()
+                .addComponent(cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(Movimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(relatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         painelcadastro.setBorder(new javax.swing.border.MatteBorder(null));
-        painelcadastro.setLayout(new java.awt.GridLayout(4, 0));
+
+        CadastroPJuridica.setText("Cadastro Pessoa Juridica");
+        CadastroPJuridica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadastroPJuridicaMouseClicked(evt);
+            }
+        });
 
         CadastroAssociado.setText("Cadastro Associado");
         CadastroAssociado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,26 +139,35 @@ public class TelaSistema extends javax.swing.JFrame {
                 CadastroAssociadoActionPerformed(evt);
             }
         });
-        painelcadastro.add(CadastroAssociado);
 
-        CadastroPJuridica.setText("Cadastro Pessoa Juridica");
-        CadastroPJuridica.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CadastroPJuridicaMouseClicked(evt);
-            }
-        });
-        painelcadastro.add(CadastroPJuridica);
+        javax.swing.GroupLayout painelcadastroLayout = new javax.swing.GroupLayout(painelcadastro);
+        painelcadastro.setLayout(painelcadastroLayout);
+        painelcadastroLayout.setHorizontalGroup(
+            painelcadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(CadastroPJuridica, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+            .addGroup(painelcadastroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(CadastroAssociado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        painelcadastroLayout.setVerticalGroup(
+            painelcadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelcadastroLayout.createSequentialGroup()
+                .addComponent(CadastroAssociado, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(CadastroPJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         painelrelatorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        painelrelatorio.setLayout(new java.awt.GridLayout(1, 0));
+        painelrelatorio.setLayout(new java.awt.GridLayout());
 
-        relatorioestoque.setText(" relatorio estoque");
-        relatorioestoque.addActionListener(new java.awt.event.ActionListener() {
+        relatoriocaixa.setText(" Relatorio Caixa");
+        relatoriocaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                relatorioestoqueActionPerformed(evt);
+                relatoriocaixaActionPerformed(evt);
             }
         });
-        painelrelatorio.add(relatorioestoque);
+        painelrelatorio.add(relatoriocaixa);
 
         relatorioclientes.setText("relatorio clientes");
         relatorioclientes.setAlignmentX(0.6F);
@@ -135,32 +178,51 @@ public class TelaSistema extends javax.swing.JFrame {
         });
         painelrelatorio.add(relatorioclientes);
 
+        javax.swing.GroupLayout LogoLayout = new javax.swing.GroupLayout(Logo);
+        Logo.setLayout(LogoLayout);
+        LogoLayout.setHorizontalGroup(
+            LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(LogoLayout.createSequentialGroup()
+                        .addComponent(painelprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(painelcadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(painelrelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(273, 273, 273)
+                .addComponent(jLabel1)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        LogoLayout.setVerticalGroup(
+            LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LogoLayout.createSequentialGroup()
+                .addGroup(LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(LogoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(LogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(painelcadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(painelprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(painelrelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
+                    .addComponent(jLabel1))
+                .addGap(55, 55, 55))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(painelcadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(painelrelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 189, Short.MAX_VALUE)
-                .addGap(133, 133, 133))
+                .addComponent(Logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(painelrelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(painelcadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(painelprincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                        .addGap(271, 271, 271))))
+                .addComponent(Logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -199,18 +261,22 @@ public class TelaSistema extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-      painelcadastro.setVisible(false);
-     painelrelatorio.setVisible(false);
+        painelcadastro.setVisible(false);
+        painelrelatorio.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void relatoriosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_relatoriosMouseClicked
         // TODO add your handling code here:
-         painelrelatorio.setVisible(true);
+        painelrelatorio.setVisible(true);
     }//GEN-LAST:event_relatoriosMouseClicked
 
-    private void relatorioestoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioestoqueActionPerformed
+    private void relatoriocaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatoriocaixaActionPerformed
 
-    }//GEN-LAST:event_relatorioestoqueActionPerformed
+        TelaRelatorioCaixa tela = new TelaRelatorioCaixa();
+        tela.setVisible(true);
+        tela = null;
+        
+    }//GEN-LAST:event_relatoriocaixaActionPerformed
 
     private void relatorioclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_relatorioclientesActionPerformed
         // TODO add your handling code here:
@@ -230,57 +296,19 @@ public class TelaSistema extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cadastroActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaSistema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaSistema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaSistema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaSistema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>   
 
-        /*
-         * Create and display the form
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new TelaSistema().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadastroAssociado;
     private javax.swing.JButton CadastroPJuridica;
+    private javax.swing.JPanel Logo;
     private javax.swing.JButton Movimentacao;
     private javax.swing.JButton cadastro;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel painelcadastro;
     private javax.swing.JPanel painelprincipal;
     private javax.swing.JPanel painelrelatorio;
+    private javax.swing.JButton relatoriocaixa;
     private javax.swing.JButton relatorioclientes;
-    private javax.swing.JButton relatorioestoque;
     private javax.swing.JButton relatorios;
     // End of variables declaration//GEN-END:variables
 }

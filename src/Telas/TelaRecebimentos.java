@@ -7,6 +7,7 @@
 package Telas;
 
 import Banco.Banco;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -29,6 +30,7 @@ public class TelaRecebimentos extends javax.swing.JDialog{
     private Mensalidades mensalidade = new Mensalidades();
     private ArrayList<Mensalidades> mensalidades;
     private int encontrado =-1;
+    private DateFormat FormataData = DateFormat.getDateInstance();
     DefaultTableModel dtm;
     
     private Banco banco = new Banco();
@@ -141,6 +143,8 @@ public class TelaRecebimentos extends javax.swing.JDialog{
 
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:
+        transacao.setTipo_pessoa(0);
+        transacao.setCod_pessoa(encontrado);
         transacao.setOperacao("C");
         mensalidade = mensalidades.get(Tabela.getSelectedRow());
         mensalidade.setPago(true);
@@ -176,7 +180,7 @@ public class TelaRecebimentos extends javax.swing.JDialog{
        int total = mensalidades.size();//pra contar as fichas
        for (int x=0; x<total;x++){ //for
            mensalidade = mensalidades.get(x);
-           Object linha [] = {mensalidade.getData_Pagamento(),mensalidade.getValor(),mensalidade.isPago()};
+           Object linha [] = {FormataData.format(mensalidade.getData_Pagamento()),mensalidade.getValor(),mensalidade.isPago()};
            dtm.addRow(linha); 
        }
    }

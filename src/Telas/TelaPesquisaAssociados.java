@@ -186,7 +186,7 @@ public class TelaPesquisaAssociados extends javax.swing.JDialog {
         DefaultTableModel dtm = (DefaultTableModel) Tabela.getModel();
         for (int x=0; x<total;x++){ //for
            ficha = fichario.get(x);//pega a ficha atual
-           if(ficha.getNome().startsWith(EntradaNome.getText())){
+           if(ficha.getNome().matches("^(?i)"+EntradaNome.getText()+".*")){
                 achados.add(x);               
                 Object linha[] = {ficha.getNome(), ficha.getTelefone(), ficha.getCPF()};
                 dtm.addRow(linha);               
@@ -198,7 +198,7 @@ public class TelaPesquisaAssociados extends javax.swing.JDialog {
         if(!encontrou){
             JOptionPane.showMessageDialog(null, "nome nao encontrado.", "Agenda", JOptionPane.INFORMATION_MESSAGE);
         }else{
-       JOptionPane.showMessageDialog(null, "encontrado com sucesso.", "SmartGas", JOptionPane.INFORMATION_MESSAGE);
+       JOptionPane.showMessageDialog(null, "encontrado com sucesso.", "GerBus", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_PesquisarActionPerformed
 

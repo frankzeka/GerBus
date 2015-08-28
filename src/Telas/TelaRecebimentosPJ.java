@@ -117,7 +117,9 @@ public class TelaRecebimentosPJ extends javax.swing.JDialog{
     }//GEN-LAST:event_BuscaActionPerformed
 
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:
+        transacao.setTipo_pessoa(1);
+        transacao.setCod_pessoa(encontrado);        
         transacao.setOperacao("C");
         transacao.setValor(Double.valueOf(Valor.getText()));
         this.dispose();
