@@ -4,6 +4,10 @@
   <NonVisualComponents>
     <Component class="javax.swing.JTextField" name="jTextField2">
     </Component>
+    <Component class="Utilitarios.ValidaCPF" name="validaCPF1">
+    </Component>
+    <Component class="Utilitarios.EmailValidator" name="emailValidator1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -67,11 +71,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="Cidade" min="-2" pref="135" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="Telefone" min="-2" pref="128" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="Telefone" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="Saida" min="-2" pref="334" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -82,7 +82,12 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="email" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
+                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="email" min="-2" pref="191" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="Endereco" alignment="1" min="-2" pref="209" max="-2" attributes="0"/>
@@ -103,7 +108,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="55" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -165,9 +170,9 @@
                   <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ativo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Saida" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="Saida" min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="ativo" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -227,7 +232,7 @@
             <Property name="text" type="java.lang.String" value="Gerar Carne"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="GerarCarneMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GerarCarneActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -288,6 +293,9 @@
       <BindingProperties>
         <BindingProperty name="text" source="Form" sourcePath="${ficha.email}" target="email" targetPath="text" updateStrategy="0" immediately="false">
           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+          <Property name="validator" type="org.jdesktop.beansbinding.Validator" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <ComponentRef name="emailValidator1"/>
+          </Property>
           <Property name="name" type="java.lang.String" value="Email"/>
         </BindingProperty>
       </BindingProperties>
@@ -340,6 +348,9 @@
       <BindingProperties>
         <BindingProperty name="text" source="Form" sourcePath="${ficha.CPF}" target="CPF" targetPath="text" updateStrategy="0" immediately="false">
           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+          <Property name="validator" type="org.jdesktop.beansbinding.Validator" editor="org.netbeans.modules.form.ComponentChooserEditor">
+            <ComponentRef name="validaCPF1"/>
+          </Property>
           <Property name="name" type="java.lang.String" value="CPF"/>
         </BindingProperty>
       </BindingProperties>

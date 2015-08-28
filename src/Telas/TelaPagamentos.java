@@ -98,7 +98,7 @@ public class TelaPagamentos extends javax.swing.JDialog{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Valor)
                     .addComponent(Finalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,12 +119,16 @@ public class TelaPagamentos extends javax.swing.JDialog{
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:        
         transacao.setOperacao("D");
-        transacao.setValor(Double.valueOf(Valor.getText()));
+        transacao.setValor(Double.valueOf(Valor.getText()));        
         this.dispose();
     }//GEN-LAST:event_FinalizarActionPerformed
     
     public Transacao retorna(){
         return transacao;        
+    }
+    
+    public PJuridica retornaPJ(){
+        return FichaPJuridica;
     }
     /**
      * @param args the command line arguments

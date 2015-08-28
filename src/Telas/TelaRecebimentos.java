@@ -9,6 +9,7 @@ package Telas;
 import Banco.Banco;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pojo.Associados;
 import pojo.Carne;
@@ -26,24 +27,25 @@ public class TelaRecebimentos extends javax.swing.JDialog{
     private Carne carne = new Carne();
     private Transacao transacao = new Transacao();
     private Mensalidades mensalidade = new Mensalidades();
-    private ArrayList<Mensalidades> Parcelas;
+    private ArrayList<Mensalidades> mensalidades;
     private int encontrado =-1;
+    DefaultTableModel dtm;
     
     private Banco banco = new Banco();
 
     /**
      * Creates new form TelaRecebimentos
      */
-    public TelaRecebimentos(java.awt.Frame parent, boolean modal, ArrayList FicharioAssociado, ArrayList FicharioPJuridica, ArrayList FicharioCarnes) {
+    public TelaRecebimentos(java.awt.Frame parent, boolean modal, ArrayList FicharioAssociado,  ArrayList FicharioCarnes) {
        //Passa a janela pai
         super(parent,modal);
         //Centraliza a janela
         setLocationRelativeTo(null);
         //Carrega os dados na memória
         this.FicharioAssociado = FicharioAssociado;
-        this.FicharioCarnes = FicharioCarnes;
-  
+        this.FicharioCarnes = FicharioCarnes;  
         initComponents();
+        dtm = (DefaultTableModel) Tabela.getModel();
     }
 
     /**
@@ -74,13 +76,10 @@ public class TelaRecebimentos extends javax.swing.JDialog{
 
         Tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Título", "Data", "Valor"
+                "Data", "Valor", "Á pagar"
             }
         ));
         jScrollPane1.setViewportView(Tabela);
@@ -112,13 +111,13 @@ public class TelaRecebimentos extends javax.swing.JDialog{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Pessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Busca, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113)
                 .addComponent(Finalizar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -143,8 +142,10 @@ public class TelaRecebimentos extends javax.swing.JDialog{
     private void FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarActionPerformed
         // TODO add your handling code here:
         transacao.setOperacao("C");
-        mensalidade = Parcelas.get(Tabela.getSelectedRow());            
+        mensalidade = mensalidades.get(Tabela.getSelectedRow());
+        mensalidade.setPago(true);
         transacao.setValor(mensalidade.getValor());
+        banco.Salva(FicharioCarnes, "carnes.db");
         this.dispose();
     }//GEN-LAST:event_FinalizarActionPerformed
 
@@ -152,27 +153,30 @@ public class TelaRecebimentos extends javax.swing.JDialog{
         return transacao;        
     }
    
-   public Carne BuscaCarne(ArrayList<Carne> FicharioCarne, String CPF){
+   public Associados retornaAssociado(){
+       return FichaAssociado;
+   }
+   
+   public Carne BuscaCarne(ArrayList<Carne> FicharioCarne, String CPF){       
         boolean encontrou = false;//pra indicar se achou ou não
-        int total = FicharioCarne.size();//pra contar as fichas
+        int total = FicharioCarne.size();//pra contar as fichas         
         for (int x=0; x<total;x++){ //for
-            carne =  FicharioCarne.get(x);
+            carne =  FicharioCarne.get(x);            
             if(carne.getCpf().matches(CPF)){
-                return carne;
+                JOptionPane.showMessageDialog(rootPane, "Encontrado: "+carne.getCpf());                
             }else{
-                carne=null;
+                carne=null;                
             }
         }
         return carne;
    }
    
    public void CarregaParcelas(Carne carne){
-       Parcelas = carne.getParcelas();
-       int total = Parcelas.size();//pra contar as fichas
-       DefaultTableModel dtm = (DefaultTableModel) Tabela.getModel();
+       mensalidades = carne.getMensalidades();
+       int total = mensalidades.size();//pra contar as fichas
        for (int x=0; x<total;x++){ //for
-           mensalidade = Parcelas.get(x);
-           Object linha [] = {"Mensalidade",mensalidade.getData_Pagamento(),mensalidade.getValor()};
+           mensalidade = mensalidades.get(x);
+           Object linha [] = {mensalidade.getData_Pagamento(),mensalidade.getValor(),mensalidade.isPago()};
            dtm.addRow(linha); 
        }
    }

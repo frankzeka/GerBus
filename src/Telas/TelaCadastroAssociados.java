@@ -55,6 +55,8 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jTextField2 = new javax.swing.JTextField();
+        validaCPF1 = new Utilitarios.ValidaCPF();
+        emailValidator1 = new Utilitarios.EmailValidator();
         jPanel1 = new javax.swing.JPanel();
         Salvar = new javax.swing.JButton();
         Consultar = new javax.swing.JButton();
@@ -106,9 +108,9 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
         });
 
         GerarCarne.setText("Gerar Carne");
-        GerarCarne.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                GerarCarneMouseClicked(evt);
+        GerarCarne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GerarCarneActionPerformed(evt);
             }
         });
 
@@ -156,6 +158,7 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
         jLabel13.setText("E-Mail: ");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${ficha.email}"), email, org.jdesktop.beansbinding.BeanProperty.create("text"), "Email");
+        binding.setValidator(emailValidator1);
         bindingGroup.addBinding(binding);
 
         jLabel3.setText("Nome:");
@@ -175,6 +178,7 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${ficha.CPF}"), CPF, org.jdesktop.beansbinding.BeanProperty.create("text"), "CPF");
+        binding.setValidator(validaCPF1);
         bindingGroup.addBinding(binding);
 
         jLabel9.setText("Endereço:");
@@ -224,10 +228,7 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
                                         .add(jLabel11)
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                         .add(Cidade, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 135, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                    .add(layout.createSequentialGroup()
-                                        .add(Telefone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 128, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .add(10, 10, 10)
-                                        .add(jLabel13))
+                                    .add(Telefone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 128, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(layout.createSequentialGroup()
                                         .add(Saida, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 334, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -235,7 +236,11 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
                                 .add(0, 0, Short.MAX_VALUE))
                             .add(layout.createSequentialGroup()
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(email, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 191, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(layout.createSequentialGroup()
+                                        .add(203, 203, 203)
+                                        .add(jLabel13)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(email, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 191, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                     .add(layout.createSequentialGroup()
                                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                                             .add(Endereco, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 209, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +255,7 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
                                                 .add(jLabel10)
                                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                                 .add(Bairro, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 115, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                                .addContainerGap())))
+                                .addContainerGap(55, Short.MAX_VALUE))))
                     .add(layout.createSequentialGroup()
                         .add(jLabel9)
                         .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -296,9 +301,9 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
                     .add(jLabel13)
                     .add(email, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(ativo)
-                    .add(Saida, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(Saida, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(ativo))
                 .add(41, 41, 41)
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -310,13 +315,19 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
         // TODO add your handling code here:
-        //ficha.setCodigo(codigo_aluno++);
-        //this.setFicha(ficha);
+        Associados nova = new Associados();
+        //Verifica se todos os campos foram validados.
         if("".equals(Saida.getText())){
-            fichario.add(ficha);
-            banco.Salva(fichario, "associados.db"); 
-            Associados nova = new Associados();
-            this.setFicha(nova);
+            //Verifica se é alteração e salva na mesma posicao
+            if (encontrado != -1){
+                fichario.set(encontrado, ficha);
+                this.setFicha(nova);
+            }else{
+                //senao salva a nova ficha
+                fichario.add(ficha);
+                banco.Salva(fichario, "associados.db");                
+                this.setFicha(nova);                
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Dados Inválidos, verifique!"+Saida.getText()+" <-aqui");
         }
@@ -331,8 +342,7 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
         Associados retorno = new Associados();
         TelaPesquisaAssociados tela = new TelaPesquisaAssociados(new javax.swing.JFrame(), true, fichario);
         tela.setVisible(true);
-        encontrado=tela.retorna();
-        JOptionPane.showMessageDialog(rootPane, "encontrado"+encontrado);
+        encontrado=tela.retorna();        
         if (encontrado != -1){            
             retorno=fichario.get(encontrado);            
             this.setFicha(retorno);           
@@ -340,11 +350,11 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ConsultarActionPerformed
 
-    private void GerarCarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GerarCarneMouseClicked
+    private void GerarCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerarCarneActionPerformed
         // TODO add your handling code here:
         TelaCarne tela = new TelaCarne(new javax.swing.JFrame(), true, ficha.getCPF());
-        tela.setVisible(true);
-    }//GEN-LAST:event_GerarCarneMouseClicked
+        tela.setVisible(true);        
+    }//GEN-LAST:event_GerarCarneActionPerformed
     
     /**
      * Returns <code>Associados</code> being edited.
@@ -420,6 +430,7 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
     private javax.swing.JTextField Telefone;
     private javax.swing.JCheckBox ativo;
     private javax.swing.JTextField email;
+    private Utilitarios.EmailValidator emailValidator1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -432,6 +443,7 @@ public class TelaCadastroAssociados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField2;
+    private Utilitarios.ValidaCPF validaCPF1;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 

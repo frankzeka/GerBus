@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -16,6 +16,7 @@ public class Mensalidades implements Serializable{
     private static final long serialVersionUID=1L;
     private Date Data_Pagamento;
     private double valor;
+    private boolean pago = false;
     
     /**
      * @return the serialVersionUID
@@ -37,6 +38,13 @@ public class Mensalidades implements Serializable{
     public double getValor() {
         return valor;
     }
+    
+     /**
+     * @return the pago
+     */
+    public boolean isPago() {
+        return pago;
+    }
 
     /**
      * @param Data_Pagamento the Data_Pagamento to set
@@ -50,6 +58,12 @@ public class Mensalidades implements Serializable{
      */
     public void setValor(double valor) {
         this.valor = valor;
+    }
+    /**
+     * @param pago the pago to set
+     */
+    public void setPago(boolean pago) {
+        this.pago = pago;
     }
     
 }

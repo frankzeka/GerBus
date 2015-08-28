@@ -6,6 +6,7 @@
 package Telas;
 
 import Banco.Banco;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,17 +19,18 @@ import pojo.Mensalidades;
  * @author 00
  */
 public class TelaCarne extends javax.swing.JDialog {
-    private ArrayList<Carne> carnes = new ArrayList<>();
+    private ArrayList<Carne> FicharioCarnes = new ArrayList<>();
     private Carne carne = new Carne();
     private ArrayList<Mensalidades> mensalidades = new ArrayList<>();
     private Mensalidades mensalidade = new Mensalidades();
+    private DateFormat FormataData = DateFormat.getDateInstance();
     private Banco banco = new Banco();
 
     /**
      * Creates new form pesoajuridica
      */
     public TelaCarne(java.awt.Frame parent, boolean modal, String CPF) {
-        carnes = (ArrayList<Carne>) banco.Carregar("carnes.db");        
+        FicharioCarnes = (ArrayList<Carne>) banco.Carregar("carnes.db");        
         carne.setCpf(CPF);
         this.setFicha(carne);
         initComponents();
@@ -88,6 +90,11 @@ public class TelaCarne extends javax.swing.JDialog {
         Gerar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 GerarMouseClicked(evt);
+            }
+        });
+        Gerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GerarActionPerformed(evt);
             }
         });
 
@@ -197,20 +204,27 @@ public class TelaCarne extends javax.swing.JDialog {
         calendario.setTime(data);
         DefaultTableModel dtm = (DefaultTableModel) Tabela.getModel();
         for(int i=0; i<Integer.parseInt(NParcelas.getText());i++){
+            mensalidade = new Mensalidades();
             calendario.add(Calendar.MONTH, 1);
             mensalidade.setData_Pagamento(calendario.getTime());
             mensalidade.setValor( Double.valueOf(Valor.getText()));
             mensalidades.add(mensalidade);
-            Object linha[] = {mensalidade.getData_Pagamento(), mensalidade.getValor()};
+            Object linha[] = {FormataData.format(mensalidade.getData_Pagamento()), mensalidade.getValor()};
             dtm.addRow(linha);                         
-        }        
+        }
+        carne.setMensalidades(mensalidades);
     }//GEN-LAST:event_GerarMouseClicked
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
         // TODO add your handling code here:
-        banco.Salva(carnes, "carne.db");
+        FicharioCarnes.add(carne);
+        banco.Salva(FicharioCarnes, "carnes.db");
         this.dispose();        
     }//GEN-LAST:event_SalvarActionPerformed
+
+    private void GerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GerarActionPerformed
 
          /**
      * Returns <code>PJuridica</code> being edited.

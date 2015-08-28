@@ -29,7 +29,10 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
         //Centraliza a janela
         setLocationRelativeTo(null);          
         //Carrega os dados na memória
-        fichario = (ArrayList<PJuridica>) banco.Carregar("pjuridica.db");       
+        fichario = (ArrayList<PJuridica>) banco.Carregar("pjuridica.db");
+         if (fichario==null){
+            fichario= new ArrayList<PJuridica>();
+        }
         //Inicializa todos os componentes da Janela.
         initComponents();
         Saida.setText("Registros:"+fichario.size());
@@ -241,7 +244,6 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
         TelaPesquisaPJuridica tela = new TelaPesquisaPJuridica(new javax.swing.JFrame(), true, fichario);
         tela.setVisible(true);
         encontrado=tela.retorna();
-        JOptionPane.showMessageDialog(rootPane, "encontrado"+encontrado);
         if (encontrado != -1){
             retorno=fichario.get(encontrado);
             this.setFicha(retorno);
@@ -325,7 +327,7 @@ public class TelaCadastroJuridica extends javax.swing.JFrame {
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
-  
+
 }
 
 

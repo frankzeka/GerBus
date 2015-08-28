@@ -51,13 +51,13 @@ public class RelatorioClientes {
 
             //adiciona o texto ao PDF
             Font f = new Font(FontFamily.COURIER, 20, Font.BOLD);
-            Paragraph p = new Paragraph("Relatório Clientes", f);
+            Paragraph p = new Paragraph("Relatório de Associados", f);
             p.setAlignment(Element.ALIGN_CENTER);
             doc.add(p);
            //Prepara os Dados
             int total = FicharioAssociados.size();           
            PdfPTable table = new PdfPTable(4);
-           PdfPCell header = new PdfPCell(new Paragraph("Lista de Clientes"));
+           PdfPCell header = new PdfPCell(new Paragraph("Lista de Associados"));
            header.setColspan(4);
            table.addCell(header);
            table.addCell("Nome");

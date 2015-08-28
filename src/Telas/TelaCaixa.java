@@ -5,10 +5,14 @@
 package Telas;
 
 import Banco.Banco;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import pojo.Associados;
 import pojo.Caixa;
+import pojo.Carne;
 import pojo.PJuridica;
 import pojo.Transacao;
 
@@ -19,11 +23,13 @@ import pojo.Transacao;
 public class TelaCaixa extends javax.swing.JFrame {
     private ArrayList<Associados> FicharioAssociado = new ArrayList<>();
     private ArrayList<PJuridica> FicharioPJuridica = new ArrayList<>();
-    private ArrayList<TelaCarne> FicharioCarne = new ArrayList<>();
+    private ArrayList<Carne> FicharioCarne = new ArrayList<>();
     private ArrayList<Caixa> FicharioCaixa = new ArrayList<>();
     private ArrayList<Transacao> transacoes = new ArrayList<>();
+    private DateFormat data = DateFormat.getDateInstance();
     private Caixa caixa = new Caixa();
     private Date data_hj = new Date();
+    DefaultTableModel dtm;
     
     private Banco banco = new Banco();
 
@@ -32,11 +38,26 @@ public class TelaCaixa extends javax.swing.JFrame {
      */
     public TelaCaixa() {
         FicharioAssociado = (ArrayList<Associados>) banco.Carregar("associados.db");
+        if (FicharioAssociado==null){
+            JOptionPane.showMessageDialog(rootPane, "Não tem associados cadastrados!");
+            this.dispose();
+        }
         FicharioPJuridica = (ArrayList<PJuridica>) banco.Carregar("pjuridica.db");
-        FicharioCarne = (ArrayList<TelaCarne>) banco.Carregar("carne.db");
+        if (FicharioPJuridica==null){
+            JOptionPane.showMessageDialog(rootPane, "Não tem Pessoas Juridicas cadastradas!");
+            this.dispose();
+        }        
+        FicharioCarne = (ArrayList<Carne>) banco.Carregar("carnes.db");
+        if (FicharioCarne==null){
+            FicharioCarne= new ArrayList<Carne>();
+        }
         FicharioCaixa = (ArrayList<Caixa>) banco.Carregar("caixa.db");
+        if (FicharioCaixa==null){
+            FicharioCaixa= new ArrayList<Caixa>();
+        }
 
         initComponents();
+        dtm = (DefaultTableModel) TabelaCaixa.getModel();
     }
 
     /**
@@ -50,9 +71,10 @@ public class TelaCaixa extends javax.swing.JFrame {
 
         Data = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TabelaCaixa = new javax.swing.JTable();
         Pagamentos = new javax.swing.JButton();
         FecharCaixa = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         Recebimentos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -65,15 +87,15 @@ public class TelaCaixa extends javax.swing.JFrame {
         Data.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         Data.setText("Caixa");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaCaixa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+
             },
             new String [] {
-                "Documento", "Pessoa", "Valor"
+                "Pessoa", "Código Fiscal", "Valor"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TabelaCaixa);
 
         Pagamentos.setText("Novo Pagamento");
         Pagamentos.addActionListener(new java.awt.event.ActionListener() {
@@ -89,12 +111,31 @@ public class TelaCaixa extends javax.swing.JFrame {
             }
         });
 
-        Recebimentos.setText("Novo Recebimento");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Recebimentos:"));
+
+        Recebimentos.setText(" Associado");
         Recebimentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RecebimentosActionPerformed(evt);
             }
         });
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(Recebimentos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 121, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(158, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(20, 20, 20)
+                .add(Recebimentos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,29 +148,31 @@ public class TelaCaixa extends javax.swing.JFrame {
                         .add(Data))
                     .add(layout.createSequentialGroup()
                         .add(132, 132, 132)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(layout.createSequentialGroup()
+                                .add(0, 52, Short.MAX_VALUE)
                                 .add(Pagamentos)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(Recebimentos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 164, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                                .add(113, 113, 113)
+                                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                     .add(layout.createSequentialGroup()
                         .add(260, 260, 260)
                         .add(FecharCaixa, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 194, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .add(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(Data)
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(Pagamentos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(Recebimentos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(layout.createSequentialGroup()
+                        .add(Data)
+                        .add(18, 18, 18)
+                        .add(Pagamentos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 222, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 51, Short.MAX_VALUE)
                 .add(FecharCaixa, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(19, 19, 19))
         );
@@ -139,22 +182,34 @@ public class TelaCaixa extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        Data.setText("Caixa "+data_hj);
+        Data.setText("Caixa "+data.format(data_hj));
     }//GEN-LAST:event_formWindowOpened
 
     private void PagamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagamentosActionPerformed
         // TODO add your handling code here:
         TelaPagamentos tela = new TelaPagamentos(new javax.swing.JFrame(), true, FicharioPJuridica);
         tela.setVisible(true);
-        transacoes.add(tela.retorna());
+        Transacao retorno = new Transacao();
+        PJuridica retornoPJ = new PJuridica();
+        retornoPJ = tela.retornaPJ();
+        retorno = tela.retorna(); 
+        transacoes.add(retorno);
+        Object linha[] = {retornoPJ.getRazaoSocial(), retorno.getCodigoFiscal(), retorno.getValor()};
+        dtm.addRow(linha);
         tela=null;
     }//GEN-LAST:event_PagamentosActionPerformed
 
     private void RecebimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecebimentosActionPerformed
         // TODO add your handling code here:
-        TelaRecebimentos tela = new TelaRecebimentos(this, true, FicharioAssociado, FicharioPJuridica, FicharioCarne);
+        TelaRecebimentos tela = new TelaRecebimentos(this, true, FicharioAssociado, FicharioCarne);
         tela.setVisible(true);
-        transacoes.add(tela.retorna());
+        Transacao retorno = new Transacao();
+        Associados retornoAssociado = new Associados();
+        retorno = tela.retorna();
+        retornoAssociado = tela.retornaAssociado();
+        transacoes.add(retorno);
+        Object linha[] = {retornoAssociado.getNome(), retorno.getCodigoFiscal(), retorno.getValor()};
+        dtm.addRow(linha);        
         tela=null;
     }//GEN-LAST:event_RecebimentosActionPerformed
 
@@ -163,6 +218,7 @@ public class TelaCaixa extends javax.swing.JFrame {
         caixa.setData(data_hj);
         caixa.setTransacoes(transacoes);
         FicharioCaixa.add(caixa);
+        banco.Salva(FicharioCaixa, "caixa.db");
         this.dispose();       
     }//GEN-LAST:event_FecharCaixaActionPerformed
 
@@ -205,7 +261,8 @@ public class TelaCaixa extends javax.swing.JFrame {
     private javax.swing.JButton FecharCaixa;
     private javax.swing.JButton Pagamentos;
     private javax.swing.JButton Recebimentos;
+    private javax.swing.JTable TabelaCaixa;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

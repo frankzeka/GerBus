@@ -24,7 +24,7 @@ public class Carne implements Serializable {
     private Date inicio;
     private int N_parcelas;
     //Grava as parcelas no carne (Código da parcela)
-    private ArrayList<Mensalidades> Parcelas = new ArrayList<>();
+    private ArrayList<Mensalidades> Mensalidades = new ArrayList<>();
     
     
     // <editor-fold defaultstate="collapsed" desc="Escuta mudancas">
@@ -117,15 +117,15 @@ public class Carne implements Serializable {
     /**
      * @return the Mensalidades
      */
-    public ArrayList<Mensalidades> getParcelas() {
-        return Parcelas;
+    public ArrayList<Mensalidades> getMensalidades() {
+        return Mensalidades;
     }
 
     /**
-     * @param Parcelas the Mensalidades to set
+     * @param Mensalidades the Mensalidades to set
      */
-    public void setParcelas(ArrayList<Mensalidades> Parcelas) {
-        this.Parcelas = Parcelas;
+    public void setMensalidades(ArrayList<Mensalidades> Mensalidades) {
+        this.Mensalidades = Mensalidades;
     }
     
 }
